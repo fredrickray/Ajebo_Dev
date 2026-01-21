@@ -6,6 +6,7 @@ import Link from 'next/link';
 const projects = [
   {
     id: 1,
+    slug: 'neuroqo',
     title: 'NeuroQO',
     description: 'High-throughput distributed task scheduling system handling 100k+ jobs daily with fault tolerance, retry mechanisms, and real-time monitoring dashboards.',
     category: 'Machine Learning',
@@ -13,10 +14,10 @@ const projects = [
     metrics: { label: '100k+', sublabel: 'Daily Jobs' },
     featured: true,
     architecture: ['Queue Service', 'Worker Nodes', 'Scheduler', 'Dashboard'],
-    link: '#',
   },
   {
     id: 2,
+    slug: 'n-civisense',
     title: 'N-Civisense',
     description: 'High-throughput distributed task scheduling system handling 100k+ jobs daily with fault tolerance, retry mechanisms, and real-time monitoring dashboards.',
     category: 'Machine Learning',
@@ -24,10 +25,10 @@ const projects = [
     metrics: { label: '100k+', sublabel: 'Daily Jobs' },
     featured: true,
     architecture: ['Queue Service', 'Worker Nodes', 'Scheduler', 'Dashboard'],
-    link: '#',
   },
   {
     id: 3,
+    slug: 'propspacex-gateway',
     title: 'PropSpaceX API Gateway',
     description: 'An extensive api gateway to a property management system with comprehensive authentication, authorization, and rate limiting.',
     category: 'API Development',
@@ -35,57 +36,56 @@ const projects = [
     metrics: { label: '99.9%', sublabel: 'Uptime' },
     featured: true,
     architecture: ['API Gateway', 'Auth Service', 'Cache Layer', 'Property Service', 'Notification Service', 'Mail Service', 'Media Service', 'Payment Service'],
-    link: '#',
   },
   {
     id: 4,
+    slug: 'propspacex-user-service',
     title: 'PropSpaceX User Service',
     description: 'A secure TypeScript microservice handling user authentication, device trust verification, and activity monitoring via REST and gRPC, with PostgreSQL/TypeORM and Docker deployment.',
     category: 'API Development',
     tags: ['NodeJS', 'Typescript', 'JWT', 'PostgreSQL', 'GeoIP', 'Express', 'gRPC', 'TypeORM', 'Docker'],
     metrics: { label: '99.9%', sublabel: 'Uptime' },
     featured: false,
-    link: '#',
   },
   {
     id: 5,
+    slug: 'propspacex-property-service',
     title: 'PropSpaceX Property Service',
     description: 'A high-performance Node.js/TypeScript microservice for real estate management, featuring geospatial search via MongoDB and blockchain integration for property tokenization. It uses gRPC for efficient inter-service communication and handles complex property lifecycles, including legal document verification.',
     category: 'API Development',
     tags: ['NodeJS', 'Typescript', 'MongoDB', 'Mongoose', 'Express', 'gRPC', 'Docker'],
     metrics: { label: '99.9%', sublabel: 'Uptime' },
     featured: false,
-    link: '#',
   },
   {
     id: 6,
+    slug: 'propspacex-media-service',
     title: 'PropSpaceX Media Service',
     description: 'A centralized Node.js/TypeScript service enabling secure, multi-provider media management for the PropSpaceX platform. Features include automatic image optimization via Sharp, abstraction of storage providers (AWS S3, Cloudinary), and dual-protocol access (gRPC for internal microservices, REST for external clients) to ensure high-performance asset delivery.',
     category: 'API Development',
     tags: ['NodeJS', 'Typescript', 'AWS S3', 'Cloudinary', 'Sharp', 'Express', 'MongoDB', 'Mongoose', 'gRPC', 'Docker'],
     metrics: { label: '99.9%', sublabel: 'Uptime' },
     featured: false,
-    link: '#',
   },
   {
     id: 7,
+    slug: 'propspacex-mail-service',
     title: 'PropSpaceX Mail Service',
     description: 'A high-performance notification microservice built with Node.js and TypeScript. Designed for reliability, it utilizes RabbitMQ for asynchronous job processing, gRPC for low-latency communication, and Nodemailer for transactional email delivery (e.g., verification, welcome). Features robust fault tolerance with exponential backoff retries and Dead Letter Queues (DLQ).',
     category: 'API Development',
     tags: ['Node.js', 'Express', 'MongoDB', 'Mongoose', 'RabbitMQ', 'gRPC', 'Nodemailer', 'Docker'],
     metrics: { label: '$1M+', sublabel: 'Processed' },
     featured: false,
-    link: '#',
   },
   {
     id: 8,
+    slug: 'propspacex-payment-service',
     title: 'PropSpaceX Payment Service',
     description: 'Payment processing service integrating Stripe, Paystack, and Flutterwave with webhook handling and reconciliation.',
     category: 'API Development',
     tags: ['NestJS', 'Express', 'MongoDB', 'Mongoose', 'Webhooks', 'Flutterwave API', 'Paystack API', 'Stripe API', 'Docker'],
     metrics: { label: '$1M+', sublabel: 'Processed' },
     featured: false,
-    link: '#',
   },
 ];
 
@@ -174,7 +174,7 @@ export default function ProjectsPage() {
                   </div>
 
                   <div className={`project-actions ${hoveredProject === project.id ? 'visible' : ''}`}>
-                    <Link href={`/projects/${project.id}`} className="btn btn-secondary btn-sm">
+                    <Link href={`/projects/${project.slug}`} className="btn btn-secondary btn-sm">
                       View Details
                     </Link>
                     <a href="#" className="btn-link">

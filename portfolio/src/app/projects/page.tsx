@@ -1,72 +1,95 @@
 'use client';
 
 import { useState } from 'react';
-import Image from 'next/image';
+import Link from 'next/link';
 
 const projects = [
   {
     id: 1,
-    title: 'Nova Stack',
-    description: 'A modern full-stack application with real-time collaboration features, built with cutting-edge technologies.',
-    image: '/projects/nova-stack.jpg',
-    category: 'Web Application',
-    tags: ['React', 'Node.js', 'MongoDB', 'Socket.io'],
+    title: 'NeuroQO',
+    description: 'High-throughput distributed task scheduling system handling 100k+ jobs daily with fault tolerance, retry mechanisms, and real-time monitoring dashboards.',
+    category: 'Machine Learning',
+    tags: ['FastAPI', 'Python', 'PostgreSQL', 'Random Forest', 'LightGBM'],
+    metrics: { label: '100k+', sublabel: 'Daily Jobs' },
     featured: true,
+    architecture: ['Queue Service', 'Worker Nodes', 'Scheduler', 'Dashboard'],
     link: '#',
   },
   {
     id: 2,
-    title: 'Cryptoken',
-    description: 'Cryptocurrency dashboard with real-time price tracking and portfolio management.',
-    image: '/projects/cryptoken.jpg',
-    category: 'UI/UX Design',
-    tags: ['Figma', 'React', 'Chart.js'],
-    featured: false,
+    title: 'N-Civisense',
+    description: 'High-throughput distributed task scheduling system handling 100k+ jobs daily with fault tolerance, retry mechanisms, and real-time monitoring dashboards.',
+    category: 'Machine Learning',
+    tags: ['FastAPI', 'Python', 'PostgreSQL', 'Random Forest', 'LightGBM'],
+    metrics: { label: '100k+', sublabel: 'Daily Jobs' },
+    featured: true,
+    architecture: ['Queue Service', 'Worker Nodes', 'Scheduler', 'Dashboard'],
     link: '#',
   },
   {
     id: 3,
-    title: 'Active Flow',
-    description: 'Fitness tracking application with personalized workout plans and progress analytics.',
-    image: '/projects/active-flow.jpg',
-    category: 'Mobile App',
-    tags: ['React Native', 'Firebase', 'Redux'],
-    featured: false,
+    title: 'PropSpaceX API Gateway',
+    description: 'An extensive api gateway to a property management system with comprehensive authentication, authorization, and rate limiting.',
+    category: 'API Development',
+    tags: ['NodeJS', 'Typescript', 'Express', 'gRPC', 'Proxy'],
+    metrics: { label: '99.9%', sublabel: 'Uptime' },
+    featured: true,
+    architecture: ['API Gateway', 'Auth Service', 'Cache Layer', 'Property Service', 'Notification Service', 'Mail Service', 'Media Service', 'Payment Service'],
     link: '#',
   },
   {
     id: 4,
-    title: 'Sentinel AI',
-    description: 'AI-powered security monitoring system with anomaly detection and real-time alerts.',
-    image: '/projects/sentinel.jpg',
-    category: 'AI/ML',
-    tags: ['Python', 'TensorFlow', 'FastAPI'],
-    featured: true,
+    title: 'PropSpaceX User Service',
+    description: 'A secure TypeScript microservice handling user authentication, device trust verification, and activity monitoring via REST and gRPC, with PostgreSQL/TypeORM and Docker deployment.',
+    category: 'API Development',
+    tags: ['NodeJS', 'Typescript', 'JWT', 'PostgreSQL', 'GeoIP', 'Express', 'gRPC', 'TypeORM', 'Docker'],
+    metrics: { label: '99.9%', sublabel: 'Uptime' },
+    featured: false,
     link: '#',
   },
   {
     id: 5,
-    title: 'Edge Engine',
-    description: 'High-performance game engine with advanced physics simulation and rendering.',
-    image: '/projects/edge-engine.jpg',
-    category: 'Systems',
-    tags: ['C++', 'Vulkan', 'CUDA'],
+    title: 'PropSpaceX Property Service',
+    description: 'A high-performance Node.js/TypeScript microservice for real estate management, featuring geospatial search via MongoDB and blockchain integration for property tokenization. It uses gRPC for efficient inter-service communication and handles complex property lifecycles, including legal document verification.',
+    category: 'API Development',
+    tags: ['NodeJS', 'Typescript', 'MongoDB', 'Mongoose', 'Express', 'gRPC', 'Docker'],
+    metrics: { label: '99.9%', sublabel: 'Uptime' },
     featured: false,
     link: '#',
   },
   {
     id: 6,
-    title: 'Terra Console',
-    description: 'Cloud infrastructure management console with multi-provider support.',
-    image: '/projects/terra.jpg',
-    category: 'DevOps',
-    tags: ['TypeScript', 'AWS', 'Terraform'],
+    title: 'PropSpaceX Media Service',
+    description: 'A centralized Node.js/TypeScript service enabling secure, multi-provider media management for the PropSpaceX platform. Features include automatic image optimization via Sharp, abstraction of storage providers (AWS S3, Cloudinary), and dual-protocol access (gRPC for internal microservices, REST for external clients) to ensure high-performance asset delivery.',
+    category: 'API Development',
+    tags: ['NodeJS', 'Typescript', 'AWS S3', 'Cloudinary', 'Sharp', 'Express', 'MongoDB', 'Mongoose', 'gRPC', 'Docker'],
+    metrics: { label: '99.9%', sublabel: 'Uptime' },
+    featured: false,
+    link: '#',
+  },
+  {
+    id: 7,
+    title: 'PropSpaceX Mail Service',
+    description: 'A high-performance notification microservice built with Node.js and TypeScript. Designed for reliability, it utilizes RabbitMQ for asynchronous job processing, gRPC for low-latency communication, and Nodemailer for transactional email delivery (e.g., verification, welcome). Features robust fault tolerance with exponential backoff retries and Dead Letter Queues (DLQ).',
+    category: 'API Development',
+    tags: ['Node.js', 'Express', 'MongoDB', 'Mongoose', 'RabbitMQ', 'gRPC', 'Nodemailer', 'Docker'],
+    metrics: { label: '$1M+', sublabel: 'Processed' },
+    featured: false,
+    link: '#',
+  },
+  {
+    id: 8,
+    title: 'PropSpaceX Payment Service',
+    description: 'Payment processing service integrating Stripe, Paystack, and Flutterwave with webhook handling and reconciliation.',
+    category: 'API Development',
+    tags: ['NestJS', 'Express', 'MongoDB', 'Mongoose', 'Webhooks', 'Flutterwave API', 'Paystack API', 'Stripe API', 'Docker'],
+    metrics: { label: '$1M+', sublabel: 'Processed' },
     featured: false,
     link: '#',
   },
 ];
 
-const categories = ['All', 'Web Application', 'Database Design', 'Product Development', 'DevOps'];
+const categories = ['All', 'Machine Learning', 'API Development', 'Distributed Systems', 'Database Design'];
 
 export default function ProjectsPage() {
   const [activeCategory, setActiveCategory] = useState('All');
@@ -81,9 +104,9 @@ export default function ProjectsPage() {
       {/* Hero Section */}
       <section className="projects-hero">
         <div className="container">
-          <span className="section-badge">LATEST PROJECTS</span>
-          <h1>Featured Lab Work</h1>
-          <p>Explore my portfolio of projects showcasing creativity, technical expertise, and problem-solving skills.</p>
+          <span className="section-badge">PORTFOLIO</span>
+          <h1>Backend Engineering &<br />System Design</h1>
+          <p>A collection of distributed systems, high-concurrency engines, and production-grade APIs built to scale.</p>
         </div>
       </section>
 
@@ -115,36 +138,32 @@ export default function ProjectsPage() {
                 onMouseEnter={() => setHoveredProject(project.id)}
                 onMouseLeave={() => setHoveredProject(null)}
               >
-                <div className="project-image">
-                  <div
-                    className="image-placeholder"
-                    style={{
-                      background: `linear-gradient(135deg, ${project.category === 'Web Application' ? '#1a1a2e, #16213e' :
-                        project.category === 'Mobile App' ? '#1e3a5f, #0d1b2a' :
-                          project.category === 'UI/UX Design' ? '#0f3460, #16213e' :
-                            project.category === 'AI/ML' ? '#2d1b69, #11001c' :
-                              project.category === 'Systems' ? '#1a1a2e, #2d132c' :
-                                '#0f2027, #203a43'
-                        })`
-                    }}
-                  >
-                    <div className="image-icon">{'</>'}</div>
+                <div className="project-header">
+                  <div className="project-metric">
+                    <span className="metric-value">{project.metrics.label}</span>
+                    <span className="metric-label">{project.metrics.sublabel}</span>
                   </div>
-
-                  <div className={`project-overlay ${hoveredProject === project.id ? 'visible' : ''}`}>
-                    <a href={project.link} className="view-btn">
-                      View Project
-                      <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                        <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                      </svg>
-                    </a>
-                  </div>
+                  {project.featured && project.architecture && (
+                    <div className="project-architecture">
+                      <span className="arch-label">SYSTEM ARCHITECTURE</span>
+                      <div className="arch-diagram">
+                        {project.architecture.map((node, idx) => (
+                          <div key={idx} className="arch-node">
+                            <span className="node-name">{node}</span>
+                            {idx < project.architecture!.length - 1 && (
+                              <span className="node-arrow">→</span>
+                            )}
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
                 </div>
 
                 <div className="project-content">
                   <div className="project-meta">
                     <span className="project-category">{project.category}</span>
-                    {project.featured && <span className="featured-badge">Featured</span>}
+                    {project.featured && <span className="featured-badge">⭐ Featured</span>}
                   </div>
                   <h3 className="project-title">{project.title}</h3>
                   <p className="project-desc">{project.description}</p>
@@ -152,6 +171,18 @@ export default function ProjectsPage() {
                     {project.tags.map((tag, idx) => (
                       <span key={idx} className="tag">{tag}</span>
                     ))}
+                  </div>
+
+                  <div className={`project-actions ${hoveredProject === project.id ? 'visible' : ''}`}>
+                    <Link href={`/projects/${project.id}`} className="btn btn-secondary btn-sm">
+                      View Details
+                    </Link>
+                    <a href="#" className="btn-link">
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
+                      </svg>
+                      Source
+                    </a>
                   </div>
                 </div>
               </div>
@@ -164,11 +195,11 @@ export default function ProjectsPage() {
       <section className="projects-cta">
         <div className="container">
           <div className="cta-box">
-            <h2>Have a Project in Mind?</h2>
-            <p>Let&apos;s collaborate and bring your ideas to life with cutting-edge technology.</p>
-            <a href="/contact" className="btn btn-primary">
-              Start a Conversation
-            </a>
+            <h2>Need Custom Backend Development?</h2>
+            <p>From API design to distributed systems, I build scalable solutions that handle real-world traffic.</p>
+            <Link href="/contact" className="btn btn-primary">
+              Let&apos;s Discuss Your Project
+            </Link>
           </div>
         </div>
       </section>
@@ -179,7 +210,7 @@ export default function ProjectsPage() {
         }
 
         .container {
-          max-width: var(--container-max);
+          max-width: 1280px;
           margin: 0 auto;
           padding: 0 24px;
         }
@@ -204,9 +235,10 @@ export default function ProjectsPage() {
         }
 
         .projects-hero h1 {
-          font-size: clamp(36px, 6vw, 56px);
-          font-weight: 800;
+          font-size: clamp(32px, 5vw, 48px);
+          font-weight: 700;
           margin-bottom: 16px;
+          line-height: 1.2;
         }
 
         .projects-hero p {
@@ -218,7 +250,7 @@ export default function ProjectsPage() {
 
         /* Filter */
         .projects-filter {
-          padding: 30px 0;
+          padding: 24px 0;
           background: var(--bg-secondary);
           border-top: 1px solid var(--border);
           border-bottom: 1px solid var(--border);
@@ -254,7 +286,7 @@ export default function ProjectsPage() {
         .filter-tab.active {
           background: var(--primary);
           border-color: var(--primary);
-          color: var(--bg-primary);
+          color: #FFFFFF;
         }
 
         /* Projects Grid */
@@ -265,7 +297,7 @@ export default function ProjectsPage() {
 
         .projects-grid {
           display: grid;
-          grid-template-columns: repeat(3, 1fr);
+          grid-template-columns: repeat(2, 1fr);
           gap: 24px;
         }
 
@@ -278,8 +310,7 @@ export default function ProjectsPage() {
         }
 
         .project-card:hover {
-          border-color: var(--border-hover);
-          transform: translateY(-4px);
+          border-color: var(--primary);
           box-shadow: var(--shadow-card);
         }
 
@@ -287,62 +318,83 @@ export default function ProjectsPage() {
           grid-column: span 2;
         }
 
-        .project-image {
-          position: relative;
-          height: 220px;
-          overflow: hidden;
-        }
-
-        .project-card.featured .project-image {
-          height: 300px;
-        }
-
-        .image-placeholder {
-          width: 100%;
-          height: 100%;
+        .project-header {
+          background: #0D1117;
+          padding: 24px;
           display: flex;
-          align-items: center;
-          justify-content: center;
+          justify-content: space-between;
+          align-items: flex-start;
+          gap: 24px;
         }
 
-        .image-icon {
-          font-size: 48px;
-          font-family: monospace;
+        .project-card:not(.featured) .project-header {
+          padding: 20px;
+        }
+
+        .project-metric {
+          text-align: center;
+          min-width: 100px;
+        }
+
+        .metric-value {
+          display: block;
+          font-size: 32px;
+          font-weight: 700;
           color: var(--primary);
-          opacity: 0.3;
+          font-family: 'Fira Code', monospace;
+          line-height: 1;
         }
 
-        .project-overlay {
-          position: absolute;
-          inset: 0;
-          background: rgba(13, 27, 30, 0.9);
+        .project-card:not(.featured) .metric-value {
+          font-size: 24px;
+        }
+
+        .metric-label {
+          font-size: 12px;
+          color: #8B949E;
+          text-transform: uppercase;
+          letter-spacing: 1px;
+          margin-top: 4px;
+          display: block;
+        }
+
+        .project-architecture {
+          flex: 1;
+        }
+
+        .arch-label {
+          font-size: 10px;
+          color: #8B949E;
+          letter-spacing: 1px;
+          margin-bottom: 12px;
+          display: block;
+        }
+
+        .arch-diagram {
           display: flex;
+          flex-wrap: wrap;
+          gap: 8px;
           align-items: center;
-          justify-content: center;
-          opacity: 0;
-          transition: opacity 0.3s ease;
         }
 
-        .project-overlay.visible {
-          opacity: 1;
-        }
-
-        .view-btn {
-          display: inline-flex;
+        .arch-node {
+          display: flex;
           align-items: center;
           gap: 8px;
-          padding: 14px 28px;
-          background: var(--primary);
-          color: var(--bg-primary);
-          border-radius: 8px;
-          font-weight: 600;
-          font-size: 14px;
-          transition: all 0.3s ease;
         }
 
-        .view-btn:hover {
-          background: var(--primary-light);
-          transform: scale(1.05);
+        .node-name {
+          padding: 8px 12px;
+          background: #161B22;
+          border: 1px solid #30363D;
+          border-radius: 6px;
+          color: #D4D4D4;
+          font-size: 12px;
+          font-family: 'Fira Code', monospace;
+        }
+
+        .node-arrow {
+          color: var(--primary);
         }
 
         .project-content {
@@ -357,7 +409,7 @@ export default function ProjectsPage() {
         }
 
         .project-category {
-          font-size: 12px;
+          font-size: 11px;
           color: var(--primary);
           font-weight: 600;
           text-transform: uppercase;
@@ -365,12 +417,8 @@ export default function ProjectsPage() {
         }
 
         .featured-badge {
-          padding: 4px 10px;
-          background: rgba(10, 186, 181, 0.2);
-          color: var(--primary);
-          border-radius: 4px;
           font-size: 11px;
-          font-weight: 600;
+          color: var(--primary);
         }
 
         .project-title {
@@ -391,15 +439,49 @@ export default function ProjectsPage() {
           display: flex;
           flex-wrap: wrap;
           gap: 8px;
+          margin-bottom: 16px;
         }
 
         .tag {
           padding: 6px 12px;
-          background: var(--bg-secondary);
-          color: var(--text-muted);
+          background: rgba(10, 186, 181, 0.1);
+          color: var(--primary);
           border-radius: 6px;
           font-size: 12px;
           font-weight: 500;
+        }
+
+        .project-actions {
+          display: flex;
+          align-items: center;
+          gap: 16px;
+          opacity: 0;
+          transform: translateY(10px);
+          transition: all 0.3s ease;
+        }
+
+        .project-actions.visible {
+          opacity: 1;
+          transform: translateY(0);
+        }
+
+        .btn-sm {
+          padding: 8px 16px;
+          font-size: 13px;
+        }
+
+        .btn-link {
+          display: flex;
+          align-items: center;
+          gap: 6px;
+          color: var(--text-secondary);
+          font-size: 13px;
+          font-weight: 500;
+          transition: color 0.3s ease;
+        }
+
+        .btn-link:hover {
+          color: var(--primary);
         }
 
         /* CTA */
@@ -425,22 +507,12 @@ export default function ProjectsPage() {
           font-size: 16px;
           color: var(--text-secondary);
           margin-bottom: 24px;
-          max-width: 400px;
+          max-width: 500px;
           margin-left: auto;
           margin-right: auto;
         }
 
-        @media (max-width: 1024px) {
-          .projects-grid {
-            grid-template-columns: repeat(2, 1fr);
-          }
-
-          .project-card.featured {
-            grid-column: span 2;
-          }
-        }
-
-        @media (max-width: 768px) {
+        @media (max-width: 900px) {
           .projects-grid {
             grid-template-columns: 1fr;
           }
@@ -449,6 +521,16 @@ export default function ProjectsPage() {
             grid-column: span 1;
           }
 
+          .project-header {
+            flex-direction: column;
+          }
+
+          .cta-box {
+            padding: 40px 24px;
+          }
+        }
+
+        @media (max-width: 640px) {
           .filter-tabs {
             justify-content: flex-start;
             overflow-x: auto;
@@ -458,10 +540,6 @@ export default function ProjectsPage() {
 
           .filter-tab {
             white-space: nowrap;
-          }
-
-          .cta-box {
-            padding: 40px 24px;
           }
         }
       `}</style>

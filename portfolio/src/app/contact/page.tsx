@@ -3,224 +3,224 @@
 import { useState } from 'react';
 
 const contactInfo = [
-    {
-        icon: '📧',
-        label: 'Email',
-        value: 'hello@devportfolio.com',
-        link: 'mailto:hello@devportfolio.com',
-    },
-    {
-        icon: '📍',
-        label: 'Location',
-        value: 'San Francisco, California',
-        link: null,
-    },
-    {
-        icon: '📱',
-        label: 'Phone',
-        value: '+1 (555) 123-4567',
-        link: 'tel:+15551234567',
-    },
+  {
+    icon: '📧',
+    label: 'Email',
+    value: 'fredrickraymond2004@gmail.com',
+    link: 'mailto:hello@devportfolio.com',
+  },
+  // {
+  //     icon: '📍',
+  //     label: 'Location',
+  //     value: 'San Francisco, California',
+  //     link: null,
+  // },
+  {
+    icon: '📱',
+    label: 'Phone',
+    value: '+234 81 6994 9369',
+    link: 'tel:+2348169949369',
+  },
 ];
 
 const socialLinks = [
-    { name: 'GitHub', icon: '⌘', href: 'https://github.com' },
-    { name: 'LinkedIn', icon: '💼', href: 'https://linkedin.com' },
-    { name: 'Twitter', icon: '🐦', href: 'https://twitter.com' },
-    { name: 'Discord', icon: '💬', href: 'https://discord.com' },
+  { name: 'GitHub', icon: '⌘', href: 'https://github.com/fredrickray' },
+  { name: 'LinkedIn', icon: '💼', href: 'https://linkedin.com/in/fredrickanyanwu2' },
+  { name: 'Twitter', icon: '🐦', href: 'https://twitter.com' },
+  { name: 'Discord', icon: '💬', href: 'https://discord.com' },
 ];
 
 export default function ContactPage() {
-    const [formData, setFormData] = useState({
-        name: '',
-        email: '',
-        subject: '',
-        message: '',
-    });
-    const [isSubmitting, setIsSubmitting] = useState(false);
-    const [submitted, setSubmitted] = useState(false);
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    subject: '',
+    message: '',
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-        setFormData({ ...formData, [e.target.name]: e.target.value });
-    };
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
 
-    const handleSubmit = async (e: React.FormEvent) => {
-        e.preventDefault();
-        setIsSubmitting(true);
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
 
-        // Simulate form submission
-        await new Promise((resolve) => setTimeout(resolve, 1500));
+    // Simulate form submission
+    await new Promise((resolve) => setTimeout(resolve, 1500));
 
-        setIsSubmitting(false);
-        setSubmitted(true);
-        setFormData({ name: '', email: '', subject: '', message: '' });
+    setIsSubmitting(false);
+    setSubmitted(true);
+    setFormData({ name: '', email: '', subject: '', message: '' });
 
-        setTimeout(() => setSubmitted(false), 5000);
-    };
+    setTimeout(() => setSubmitted(false), 5000);
+  };
 
-    return (
-        <div className="contact-page">
-            <div className="container">
-                <div className="contact-layout">
-                    {/* Left Side - Info */}
-                    <div className="contact-info">
-                        <div className="info-header">
-                            <span className="section-badge">CONTACT</span>
-                            <h1>
-                                Get in<br />
-                                <span className="text-accent">Touch</span>
-                            </h1>
-                            <p>
-                                Have a project in mind or just want to chat? I&apos;d love to hear from you.
-                                Fill out the form or reach out through any of the channels below.
-                            </p>
-                        </div>
-
-                        <div className="contact-details">
-                            {contactInfo.map((item, idx) => (
-                                <div key={idx} className="contact-item">
-                                    <div className="contact-icon">{item.icon}</div>
-                                    <div className="contact-text">
-                                        <span className="contact-label">{item.label}</span>
-                                        {item.link ? (
-                                            <a href={item.link} className="contact-value">{item.value}</a>
-                                        ) : (
-                                            <span className="contact-value">{item.value}</span>
-                                        )}
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-
-                        <div className="social-section">
-                            <h3>Follow Me</h3>
-                            <div className="social-links">
-                                {socialLinks.map((social, idx) => (
-                                    <a
-                                        key={idx}
-                                        href={social.href}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="social-link"
-                                        title={social.name}
-                                    >
-                                        {social.icon}
-                                    </a>
-                                ))}
-                            </div>
-                        </div>
-                    </div>
-
-                    {/* Right Side - Form */}
-                    <div className="contact-form-container">
-                        <div className="form-header">
-                            <h2>Send a Message</h2>
-                            <p>I typically respond within 24 hours</p>
-                        </div>
-
-                        {submitted ? (
-                            <div className="success-message">
-                                <div className="success-icon">✓</div>
-                                <h3>Message Sent!</h3>
-                                <p>Thank you for reaching out. I&apos;ll get back to you soon.</p>
-                            </div>
-                        ) : (
-                            <form onSubmit={handleSubmit} className="contact-form">
-                                <div className="form-row">
-                                    <div className="form-group">
-                                        <label htmlFor="name">Full Name</label>
-                                        <input
-                                            type="text"
-                                            id="name"
-                                            name="name"
-                                            value={formData.name}
-                                            onChange={handleChange}
-                                            placeholder="John Doe"
-                                            required
-                                        />
-                                    </div>
-                                    <div className="form-group">
-                                        <label htmlFor="email">Email Address</label>
-                                        <input
-                                            type="email"
-                                            id="email"
-                                            name="email"
-                                            value={formData.email}
-                                            onChange={handleChange}
-                                            placeholder="john@example.com"
-                                            required
-                                        />
-                                    </div>
-                                </div>
-
-                                <div className="form-group">
-                                    <label htmlFor="subject">Subject</label>
-                                    <select
-                                        id="subject"
-                                        name="subject"
-                                        value={formData.subject}
-                                        onChange={handleChange}
-                                        required
-                                    >
-                                        <option value="">Select a subject</option>
-                                        <option value="project">Project Inquiry</option>
-                                        <option value="collaboration">Collaboration</option>
-                                        <option value="job">Job Opportunity</option>
-                                        <option value="other">Other</option>
-                                    </select>
-                                </div>
-
-                                <div className="form-group">
-                                    <label htmlFor="message">Message</label>
-                                    <textarea
-                                        id="message"
-                                        name="message"
-                                        value={formData.message}
-                                        onChange={handleChange}
-                                        placeholder="Tell me about your project or idea..."
-                                        rows={6}
-                                        required
-                                    />
-                                </div>
-
-                                <button
-                                    type="submit"
-                                    className="btn btn-primary submit-btn"
-                                    disabled={isSubmitting}
-                                >
-                                    {isSubmitting ? (
-                                        <>
-                                            <span className="spinner"></span>
-                                            Sending...
-                                        </>
-                                    ) : (
-                                        <>
-                                            Send Message
-                                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                                                <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                                            </svg>
-                                        </>
-                                    )}
-                                </button>
-                            </form>
-                        )}
-                    </div>
-                </div>
+  return (
+    <div className="contact-page">
+      <div className="container">
+        <div className="contact-layout">
+          {/* Left Side - Info */}
+          <div className="contact-info">
+            <div className="info-header">
+              <span className="section-badge">CONTACT</span>
+              <h1>
+                Get in<br />
+                <span className="text-accent">Touch</span>
+              </h1>
+              <p>
+                Have a project in mind or just want to chat? I&apos;d love to hear from you.
+                Fill out the form or reach out through any of the channels below.
+              </p>
             </div>
 
-            {/* Map Section */}
-            <div className="map-section">
-                <div className="map-placeholder">
-                    <div className="map-overlay">
-                        <div className="map-content">
-                            <span className="map-icon">📍</span>
-                            <span>San Francisco, CA</span>
-                        </div>
-                    </div>
+            <div className="contact-details">
+              {contactInfo.map((item, idx) => (
+                <div key={idx} className="contact-item">
+                  <div className="contact-icon">{item.icon}</div>
+                  <div className="contact-text">
+                    <span className="contact-label">{item.label}</span>
+                    {item.link ? (
+                      <a href={item.link} className="contact-value">{item.value}</a>
+                    ) : (
+                      <span className="contact-value">{item.value}</span>
+                    )}
+                  </div>
                 </div>
+              ))}
             </div>
 
-            <style jsx>{`
+            <div className="social-section">
+              <h3>Follow Me</h3>
+              <div className="social-links">
+                {socialLinks.map((social, idx) => (
+                  <a
+                    key={idx}
+                    href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="social-link"
+                    title={social.name}
+                  >
+                    {social.icon}
+                  </a>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Right Side - Form */}
+          <div className="contact-form-container">
+            <div className="form-header">
+              <h2>Send a Message</h2>
+              <p>I typically respond within 24 hours</p>
+            </div>
+
+            {submitted ? (
+              <div className="success-message">
+                <div className="success-icon">✓</div>
+                <h3>Message Sent!</h3>
+                <p>Thank you for reaching out. I&apos;ll get back to you soon.</p>
+              </div>
+            ) : (
+              <form onSubmit={handleSubmit} className="contact-form">
+                <div className="form-row">
+                  <div className="form-group">
+                    <label htmlFor="name">Full Name</label>
+                    <input
+                      type="text"
+                      id="name"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleChange}
+                      placeholder="John Doe"
+                      required
+                    />
+                  </div>
+                  <div className="form-group">
+                    <label htmlFor="email">Email Address</label>
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleChange}
+                      placeholder="john@example.com"
+                      required
+                    />
+                  </div>
+                </div>
+
+                <div className="form-group">
+                  <label htmlFor="subject">Subject</label>
+                  <select
+                    id="subject"
+                    name="subject"
+                    value={formData.subject}
+                    onChange={handleChange}
+                    required
+                  >
+                    <option value="">Select a subject</option>
+                    <option value="project">Project Inquiry</option>
+                    <option value="collaboration">Collaboration</option>
+                    <option value="job">Job Opportunity</option>
+                    <option value="other">Other</option>
+                  </select>
+                </div>
+
+                <div className="form-group">
+                  <label htmlFor="message">Message</label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    value={formData.message}
+                    onChange={handleChange}
+                    placeholder="Tell me about your project or idea..."
+                    rows={6}
+                    required
+                  />
+                </div>
+
+                <button
+                  type="submit"
+                  className="btn btn-primary submit-btn"
+                  disabled={isSubmitting}
+                >
+                  {isSubmitting ? (
+                    <>
+                      <span className="spinner"></span>
+                      Sending...
+                    </>
+                  ) : (
+                    <>
+                      Send Message
+                      <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                        <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                      </svg>
+                    </>
+                  )}
+                </button>
+              </form>
+            )}
+          </div>
+        </div>
+      </div>
+
+      {/* Map Section */}
+      <div className="map-section">
+        <div className="map-placeholder">
+          <div className="map-overlay">
+            <div className="map-content">
+              <span className="map-icon">📍</span>
+              <span>San Francisco, CA</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <style jsx>{`
         .contact-page {
           min-height: 100vh;
           background: var(--bg-primary);
@@ -518,6 +518,6 @@ export default function ContactPage() {
           }
         }
       `}</style>
-        </div>
-    );
+    </div>
+  );
 }

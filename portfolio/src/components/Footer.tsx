@@ -7,9 +7,8 @@ const Footer = () => {
 
   const socialLinks = [
     { name: 'GitHub', href: 'https://github.com/fredrickray' },
-    { name: 'LinkedIn', href: 'https://linkedin.com/fredrickanyanwu2' },
+    { name: 'LinkedIn', href: 'https://linkedin.com/in/fredrickanyanwu2' },
     { name: 'Twitter', href: 'https://twitter.com' },
-    { name: 'Discord', href: 'https://discord.com' },
   ];
 
   const quickLinks = [
@@ -25,19 +24,19 @@ const Footer = () => {
         <div className="footer-main">
           <div className="footer-brand">
             <Link href="/" className="logo">
-              <span className="logo-icon">{'< '}</span>
-              <span className="logo-text">AjeboDev Portfolio</span>
-              <span className='logo-icon'>{' />'}</span>
+              <span className="logo-icon">{'<'}</span>
+              <span className="logo-text">AjeboDev</span>
+              <span className="logo-icon">{'/>'}</span>
             </Link>
             <p className="footer-desc">
-              Building digital experiences with passion and precision.
-              Let&apos;s create something amazing together.
+              Backend Engineer specializing in distributed systems,
+              API design, and scalable architectures.
             </p>
           </div>
 
           <div className="footer-links">
             <div className="footer-col">
-              <h4>Quick Links</h4>
+              <h4>Navigation</h4>
               <ul>
                 {quickLinks.map((link) => (
                   <li key={link.name}>
@@ -63,10 +62,10 @@ const Footer = () => {
         </div>
 
         <div className="footer-bottom">
-          <p>&copy; {currentYear} DevPortfolio. All rights reserved.</p>
-          <div className="footer-bottom-links">
-            <Link href="/privacy">Privacy Policy</Link>
-            <Link href="/terms">Terms of Service</Link>
+          <p>&copy; {currentYear} AjeboDev. All rights reserved.</p>
+          <div className="footer-status">
+            <span className="status-dot"></span>
+            <span>All systems operational</span>
           </div>
         </div>
       </div>
@@ -80,7 +79,7 @@ const Footer = () => {
         }
 
         .footer-container {
-          max-width: var(--container-max);
+          max-width: 1280px;
           margin: 0 auto;
           padding: 0 24px;
         }
@@ -96,7 +95,7 @@ const Footer = () => {
         .footer-brand .logo {
           display: inline-flex;
           align-items: center;
-          gap: 8px;
+          gap: 4px;
           font-weight: 700;
           font-size: 18px;
           color: var(--text-primary);
@@ -105,7 +104,7 @@ const Footer = () => {
 
         .logo-icon {
           color: var(--primary);
-          font-family: monospace;
+          font-family: 'Fira Code', monospace;
         }
 
         .footer-desc {
@@ -122,10 +121,12 @@ const Footer = () => {
         }
 
         .footer-col h4 {
-          font-size: 16px;
+          font-size: 14px;
           font-weight: 600;
           margin-bottom: 20px;
           color: var(--text-primary);
+          text-transform: uppercase;
+          letter-spacing: 1px;
         }
 
         .footer-col ul {
@@ -155,18 +156,24 @@ const Footer = () => {
           color: var(--text-muted);
         }
 
-        .footer-bottom-links {
+        .footer-status {
           display: flex;
-          gap: 24px;
+          align-items: center;
+          gap: 8px;
+          font-size: 13px;
         }
 
-        .footer-bottom-links a {
-          color: var(--text-muted);
-          transition: color 0.3s ease;
+        .status-dot {
+          width: 8px;
+          height: 8px;
+          background: #27C93F;
+          border-radius: 50%;
+          animation: pulse 2s ease-in-out infinite;
         }
 
-        .footer-bottom-links a:hover {
-          color: var(--primary);
+        @keyframes pulse {
+          0%, 100% { opacity: 1; }
+          50% { opacity: 0.5; }
         }
 
         @media (max-width: 768px) {

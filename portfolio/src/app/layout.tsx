@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { Navbar, Footer } from "@/components";
+import { ThemeProvider } from "@/context/ThemeContext";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -9,13 +10,13 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "DevPortfolio | Full-Stack Developer & Problem Solver",
-  description: "A passionate full-stack developer crafting digital experiences through precise engineering. Explore my projects, skills, and let's build something amazing together.",
-  keywords: ["developer", "portfolio", "full-stack", "web development", "react", "next.js"],
-  authors: [{ name: "Developer" }],
+  title: "Ajebo Dev | Backend Engineer & System Architect",
+  description: "A passionate backend engineer specializing in building robust, scalable, and high-performance systems. Expert in distributed systems, API design, and database architecture.",
+  keywords: ["backend engineer", "system architect", "API design", "distributed systems", "Node.js", "Python", "PostgreSQL"],
+  authors: [{ name: "Ajebo Dev" }],
   openGraph: {
-    title: "DevPortfolio | Full-Stack Developer & Problem Solver",
-    description: "A passionate full-stack developer crafting digital experiences through precise engineering.",
+    title: "Ajebo Dev | Backend Engineer & System Architect",
+    description: "Building robust, scalable, and high-performance backend systems.",
     type: "website",
   },
 };
@@ -26,13 +27,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body className={`${inter.variable}`}>
-        <Navbar />
-        <main style={{ paddingTop: '70px', minHeight: '100vh' }}>
-          {children}
-        </main>
-        <Footer />
+        <ThemeProvider>
+          <Navbar />
+          <main style={{ paddingTop: '70px', minHeight: '100vh' }}>
+            {children}
+          </main>
+          <Footer />
+        </ThemeProvider>
       </body>
     </html>
   );

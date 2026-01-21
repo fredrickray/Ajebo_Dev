@@ -3,10 +3,12 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
+import { useTheme } from '@/context/ThemeContext';
 
 const Navbar = () => {
   const pathname = usePathname();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { theme, toggleTheme } = useTheme();
 
   const navLinks = [
     { href: '/', label: 'Home' },
@@ -19,8 +21,9 @@ const Navbar = () => {
     <nav className="navbar">
       <div className="navbar-container">
         <Link href="/" className="logo">
-          <span className="logo-icon">{'</>'}</span>
-          <span className="logo-text">DevPortfolio</span>
+          <span className="logo-icon">{'<'}</span>
+          <span className="logo-text">AjeboDev</span>
+          <span className="logo-icon">{'/>'}</span>
         </Link>
 
         <div className={`nav-links ${isMenuOpen ? 'active' : ''}`}>
@@ -37,11 +40,35 @@ const Navbar = () => {
         </div>
 
         <div className="nav-actions">
-          <Link href="/contact" className="btn btn-primary">
+          <button
+            className="theme-toggle"
+            onClick={toggleTheme}
+            aria-label="Toggle theme"
+          >
+            {theme === 'light' ? (
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+              </svg>
+            ) : (
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <circle cx="12" cy="12" r="5"></circle>
+                <line x1="12" y1="1" x2="12" y2="3"></line>
+                <line x1="12" y1="21" x2="12" y2="23"></line>
+                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                <line x1="1" y1="12" x2="3" y2="12"></line>
+                <line x1="21" y1="12" x2="23" y2="12"></line>
+                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+              </svg>
+            )}
+          </button>
+
+          <Link href="/contact" className="btn btn-primary hire-btn">
             Hire Me
           </Link>
-          
-          <button 
+
+          <button
             className="menu-toggle"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             aria-label="Toggle menu"
@@ -59,13 +86,14 @@ const Navbar = () => {
           right: 0;
           z-index: 1000;
           padding: 16px 0;
-          background: rgba(13, 27, 30, 0.95);
+          background: var(--navbar-bg);
           backdrop-filter: blur(10px);
           border-bottom: 1px solid var(--border);
+          transition: background 0.3s ease;
         }
 
         .navbar-container {
-          max-width: var(--container-max);
+          max-width: 1280px;
           margin: 0 auto;
           padding: 0 24px;
           display: flex;
@@ -76,7 +104,7 @@ const Navbar = () => {
         .logo {
           display: flex;
           align-items: center;
-          gap: 8px;
+          gap: 4px;
           font-weight: 700;
           font-size: 18px;
           color: var(--text-primary);
@@ -88,7 +116,7 @@ const Navbar = () => {
 
         .logo-icon {
           color: var(--primary);
-          font-family: monospace;
+          font-family: 'Fira Code', monospace;
         }
 
         .nav-links {
@@ -124,7 +152,30 @@ const Navbar = () => {
         .nav-actions {
           display: flex;
           align-items: center;
-          gap: 16px;
+          gap: 12px;
+        }
+
+        .theme-toggle {
+          width: 40px;
+          height: 40px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background: var(--bg-card);
+          border: 1px solid var(--border);
+          border-radius: 8px;
+          cursor: pointer;
+          color: var(--text-secondary);
+          transition: all 0.3s ease;
+        }
+
+        .theme-toggle:hover {
+          border-color: var(--primary);
+          color: var(--primary);
+        }
+
+        .hire-btn {
+          padding: 10px 20px;
         }
 
         .menu-toggle {
@@ -203,7 +254,7 @@ const Navbar = () => {
             display: block;
           }
 
-          .nav-actions .btn {
+          .hire-btn {
             display: none;
           }
         }

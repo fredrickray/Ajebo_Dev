@@ -28,8 +28,116 @@ const projectsData: Record<string, {
   };
   tradeoffs: { tech: string; alternative: string; reason: string }[];
 }> = {
-  'neuroqo': {
+  'openrdb-studio': {
     id: 1,
+    slug: 'openrdb-studio',
+    title: 'OpenRDB Studio',
+    subtitle: 'A free, open-source, cross-platform GUI for relational databases, designed to provide a modern, intuitive, and unrestricted developer experience',
+    description: 'A high-performance machine learning system for database query optimization. Built to analyze SQL patterns and suggest optimizations using Random Forest and LightGBM models.',
+    tags: ['Rust', 'Tauri', 'React', 'Typescript', 'SQLx'],
+    githubUrl: 'https://github.com/fredrickray/openrdb-studio',
+    sections: ['System Architecture', 'Engineering Challenges', 'Database Design', 'Trade-offs & Decisions'],
+    architecture: {
+      description: 'The architecture leverages a microservices pattern using FastAPI for the REST API, with dedicated services for feature extraction, model inference, and optimization suggestions.',
+      nodes: [
+        { name: 'React Frontend', description: 'React + TypeScript' },
+        { name: 'Rust Backend', description: 'Rust + SQLx' },
+        { name: 'Tauri', description: 'Cross-platform desktop application' },
+        { name: 'SQLx', description: 'Async SQL toolkit with PostgreSQL support' },
+        { name: 'Tokio', description: 'Async runtime for Rust' },
+        { name: 'Monaco Editor', description: "Code/SQL editor (VS Code's editor)" },
+      ],
+    },
+    challenges: [
+      { title: 'Model Training Pipeline', description: 'Designed an efficient training pipeline that processes SQL query patterns from production databases while ensuring data privacy and security compliance.' },
+      { title: 'Low-Latency Inference', description: 'Optimized model inference to achieve <50ms prediction times by implementing model quantization and caching frequently accessed patterns.' },
+      { title: 'Feature Engineering', description: 'Developed robust SQL parsing to extract meaningful features from diverse query patterns across different database schemas.' },
+      { title: 'Accuracy vs Speed', description: 'Balanced model complexity with inference speed requirements, using ensemble methods for accuracy while maintaining performance.' },
+    ],
+    databaseDesign: {
+      title: 'Query Analytics Schema',
+      code: `CREATE TABLE queries (
+  id UUID PRIMARY KEY,
+  sql_hash VARCHAR(64) UNIQUE,
+  execution_time_ms INTEGER,
+  optimization_applied BOOLEAN,
+  created_at TIMESTAMP DEFAULT NOW()
+);
+
+CREATE TABLE predictions (
+  id UUID PRIMARY KEY,
+  query_id UUID REFERENCES queries(id),
+  predicted_improvement FLOAT,
+  confidence_score FLOAT,
+  model_version VARCHAR(20)
+);
+
+CREATE INDEX idx_queries_hash ON queries(sql_hash);`,
+      description: 'Schema designed for efficient query pattern storage and prediction tracking.',
+    },
+    tradeoffs: [
+      { tech: 'PostgreSQL', alternative: 'MongoDB', reason: 'Required strong relational integrity for query-prediction mappings and analytics aggregations.' },
+      { tech: 'FastAPI', alternative: 'Flask', reason: 'Async support and automatic OpenAPI documentation essential for ML API endpoints.' },
+      { tech: 'LightGBM', alternative: 'XGBoost', reason: 'Faster training times with comparable accuracy, important for frequent model retraining.' },
+      { tech: 'Redis', alternative: 'Memcached', reason: 'Data structure support for caching complex prediction results and feature vectors.' },
+    ],
+  },
+  'marketlense': {
+    id: 2,
+    slug: 'marketlense',
+    title: 'MarketLense',
+    subtitle: 'A free, open-source, cross-platform GUI for relational databases, designed to provide a modern, intuitive, and unrestricted developer experience',
+    description: 'A high-performance machine learning system for database query optimization. Built to analyze SQL patterns and suggest optimizations using Random Forest and LightGBM models.',
+    tags: ['Rust', 'Tauri', 'React', 'Typescript', 'SQLx'],
+    githubUrl: 'https://github.com/fredrickray/marketlense',
+    sections: ['System Architecture', 'Engineering Challenges', 'Database Design', 'Trade-offs & Decisions'],
+    architecture: {
+      description: 'The architecture leverages a microservices pattern using FastAPI for the REST API, with dedicated services for feature extraction, model inference, and optimization suggestions.',
+      nodes: [
+        { name: 'React Frontend', description: 'React + TypeScript' },
+        { name: 'Rust Backend', description: 'Rust + SQLx' },
+        { name: 'Tauri', description: 'Cross-platform desktop application' },
+        { name: 'SQLx', description: 'Async SQL toolkit with PostgreSQL support' },
+        { name: 'Tokio', description: 'Async runtime for Rust' },
+        { name: 'Monaco Editor', description: "Code/SQL editor (VS Code's editor)" },
+      ],
+    },
+    challenges: [
+      { title: 'Model Training Pipeline', description: 'Designed an efficient training pipeline that processes SQL query patterns from production databases while ensuring data privacy and security compliance.' },
+      { title: 'Low-Latency Inference', description: 'Optimized model inference to achieve <50ms prediction times by implementing model quantization and caching frequently accessed patterns.' },
+      { title: 'Feature Engineering', description: 'Developed robust SQL parsing to extract meaningful features from diverse query patterns across different database schemas.' },
+      { title: 'Accuracy vs Speed', description: 'Balanced model complexity with inference speed requirements, using ensemble methods for accuracy while maintaining performance.' },
+    ],
+    databaseDesign: {
+      title: 'Query Analytics Schema',
+      code: `CREATE TABLE queries (
+  id UUID PRIMARY KEY,
+  sql_hash VARCHAR(64) UNIQUE,
+  execution_time_ms INTEGER,
+  optimization_applied BOOLEAN,
+  created_at TIMESTAMP DEFAULT NOW()
+);
+
+CREATE TABLE predictions (
+  id UUID PRIMARY KEY,
+  query_id UUID REFERENCES queries(id),
+  predicted_improvement FLOAT,
+  confidence_score FLOAT,
+  model_version VARCHAR(20)
+);
+
+CREATE INDEX idx_queries_hash ON queries(sql_hash);`,
+      description: 'Schema designed for efficient query pattern storage and prediction tracking.',
+    },
+    tradeoffs: [
+      { tech: 'PostgreSQL', alternative: 'MongoDB', reason: 'Required strong relational integrity for query-prediction mappings and analytics aggregations.' },
+      { tech: 'FastAPI', alternative: 'Flask', reason: 'Async support and automatic OpenAPI documentation essential for ML API endpoints.' },
+      { tech: 'LightGBM', alternative: 'XGBoost', reason: 'Faster training times with comparable accuracy, important for frequent model retraining.' },
+      { tech: 'Redis', alternative: 'Memcached', reason: 'Data structure support for caching complex prediction results and feature vectors.' },
+    ],
+  },
+  'neuroqo': {
+    id: 3,
     slug: 'neuroqo',
     title: 'NeuroQO',
     subtitle: 'ML-Powered Query Optimization Engine',
@@ -83,7 +191,7 @@ CREATE INDEX idx_queries_hash ON queries(sql_hash);`,
     ],
   },
   'n-civisense': {
-    id: 2,
+    id: 4,
     slug: 'n-civisense',
     title: 'N-Civisense',
     subtitle: 'Civic Intelligence Platform',
@@ -136,7 +244,7 @@ CREATE INDEX idx_records_category ON civic_records(category);`,
     ],
   },
   'propspacex-gateway': {
-    id: 3,
+    id: 5,
     slug: 'propspacex-gateway',
     title: 'PropSpaceX API Gateway',
     subtitle: 'High-Performance Microservices Gateway',
@@ -187,7 +295,7 @@ CREATE TABLE rate_limits (
     ],
   },
   'propspacex-user-service': {
-    id: 4,
+    id: 6,
     slug: 'propspacex-user-service',
     title: 'PropSpaceX User Service',
     subtitle: 'Authentication & User Management Microservice',
@@ -238,7 +346,7 @@ CREATE TABLE devices (
     ],
   },
   'propspacex-property-service': {
-    id: 5,
+    id: 7,
     slug: 'propspacex-property-service',
     title: 'PropSpaceX Property Service',
     subtitle: 'Real Estate Management Microservice',
@@ -290,7 +398,7 @@ db.properties.createIndex({ location: "2dsphere" });`,
     ],
   },
   'propspacex-media-service': {
-    id: 6,
+    id: 8,
     slug: 'propspacex-media-service',
     title: 'PropSpaceX Media Service',
     subtitle: 'Multi-Provider Media Management',
@@ -341,7 +449,7 @@ db.properties.createIndex({ location: "2dsphere" });`,
     ],
   },
   'propspacex-mail-service': {
-    id: 7,
+    id: 9,
     slug: 'propspacex-mail-service',
     title: 'PropSpaceX Mail Service',
     subtitle: 'Reliable Notification Microservice',
@@ -391,7 +499,7 @@ db.emails.createIndex({ createdAt: 1 }, { expireAfterSeconds: 2592000 });`,
     ],
   },
   'propspacex-payment-service': {
-    id: 8,
+    id: 10,
     slug: 'propspacex-payment-service',
     title: 'PropSpaceX Payment Service',
     subtitle: 'Multi-Provider Payment Processing',

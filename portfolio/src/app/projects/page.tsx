@@ -11,9 +11,10 @@ const projects = [
     description: 'A free, open-source, cross-platform GUI for relational databases, designed to provide a modern, intuitive, and unrestricted developer experience',
     category: 'Dev Tools',
     tags: ['Rust', 'Tauri', 'React', 'Typescript', 'SQLx'],
-    metrics: { label: '100k+', sublabel: 'Daily Jobs' },
+    // metrics: { label: '100k+', sublabel: 'Daily Jobs' },
     featured: true,
-    architecture: ['Queue Service', 'Worker Nodes', 'Scheduler', 'Dashboard'],
+    architecture: ['Desktop App', 'Database GUI', 'Cross-Platform', 'SQL Client'],
+    github: 'https://github.com/fredrickanyanwu/openrdb-studio',
   },
   {
     id: 2,
@@ -22,31 +23,34 @@ const projects = [
     description: 'An AI-powered stock decision support system based on market trends and real-world signals.',
     category: 'AI',
     tags: ['FastAPI', 'Python', 'PostgreSQL', 'Random Forest', 'LightGBM'],
-    metrics: { label: '100k+', sublabel: 'Daily Jobs' },
+    // metrics: { label: '100k+', sublabel: 'Daily Jobs' },
     featured: true,
-    architecture: ['Queue Service', 'Worker Nodes', 'Scheduler', 'Dashboard'],
+    architecture: ['AI', 'Machine Learning', 'Data Analysis', 'Stock Market'],
+    github: 'https://github.com/fredrickanyanwu/marketlense',
   },
   {
     id: 3,
     slug: 'neuroqo',
     title: 'NeuroQO',
-    description: 'High-throughput distributed task scheduling system handling 100k+ jobs daily with fault tolerance, retry mechanisms, and real-time monitoring dashboards.',
+    description: 'An intelligent system that observes, analyzes, and optimizes database queries using machine learning techniques.',
     category: 'Machine Learning',
     tags: ['FastAPI', 'Python', 'PostgreSQL', 'Random Forest', 'LightGBM'],
-    metrics: { label: '100k+', sublabel: 'Daily Jobs' },
+    // metrics: { label: '100k+', sublabel: 'Daily Jobs' },
     featured: true,
-    architecture: ['Queue Service', 'Worker Nodes', 'Scheduler', 'Dashboard'],
+    architecture: ['Machine Learning', 'Database Optimization', 'Query Analysis', 'Performance Tuning'],
+    github: 'https://github.com/fredrickanyanwu/neuroqo',
   },
   {
     id: 4,
     slug: 'n-civisense',
     title: 'N-Civisense',
-    description: 'High-throughput distributed task scheduling system handling 100k+ jobs daily with fault tolerance, retry mechanisms, and real-time monitoring dashboards.',
+    description: 'N-ATLaS is a GPU‑accelerated, production‑ready FastAPI service for: Conversational LLM inference (streaming & non‑streaming)',
     category: 'Machine Learning',
     tags: ['FastAPI', 'Python', 'PostgreSQL', 'Random Forest', 'LightGBM'],
-    metrics: { label: '100k+', sublabel: 'Daily Jobs' },
+    // metrics: { label: '100k+', sublabel: 'Daily Jobs' },
     featured: true,
-    architecture: ['Queue Service', 'Worker Nodes', 'Scheduler', 'Dashboard'],
+    architecture: ['GPU-accelerated', 'FastAPI', 'LLM Inference', 'Streaming', 'Non-streaming'],
+    github: 'https://github.com/fredrickanyanwu/n-civisense',
   },
   {
     id: 5,
@@ -55,9 +59,10 @@ const projects = [
     description: 'An extensive api gateway to a property management system with comprehensive authentication, authorization, and rate limiting.',
     category: 'API Development',
     tags: ['NodeJS', 'Typescript', 'Express', 'gRPC', 'Proxy'],
-    metrics: { label: '99.9%', sublabel: 'Uptime' },
+    // metrics: { label: '99.9%', sublabel: 'Uptime' },
     featured: true,
     architecture: ['API Gateway', 'Auth Service', 'Cache Layer', 'Property Service', 'Notification Service', 'Mail Service', 'Media Service', 'Payment Service'],
+    github: 'https://github.com/fredrickanyanwu/propspacex-gateway',
   },
   {
     id: 6,
@@ -66,8 +71,9 @@ const projects = [
     description: 'A secure TypeScript microservice handling user authentication, device trust verification, and activity monitoring via REST and gRPC, with PostgreSQL/TypeORM and Docker deployment.',
     category: 'API Development',
     tags: ['NodeJS', 'Typescript', 'JWT', 'PostgreSQL', 'GeoIP', 'Express', 'gRPC', 'TypeORM', 'Docker'],
-    metrics: { label: '99.9%', sublabel: 'Uptime' },
+    // metrics: { label: '99.9%', sublabel: 'Uptime' },
     featured: false,
+    github: 'https://github.com/fredrickanyanwu/propspacex-user-service',
   },
   {
     id: 7,
@@ -76,8 +82,9 @@ const projects = [
     description: 'A high-performance Node.js/TypeScript microservice for real estate management, featuring geospatial search via MongoDB and blockchain integration for property tokenization. It uses gRPC for efficient inter-service communication and handles complex property lifecycles, including legal document verification.',
     category: 'API Development',
     tags: ['NodeJS', 'Typescript', 'MongoDB', 'Mongoose', 'Express', 'gRPC', 'Docker'],
-    metrics: { label: '99.9%', sublabel: 'Uptime' },
+    // metrics: { label: '99.9%', sublabel: 'Uptime' },
     featured: false,
+    github: 'https://github.com/fredrickanyanwu/propspacex-property-service',
   },
   {
     id: 8,
@@ -86,18 +93,20 @@ const projects = [
     description: 'A centralized Node.js/TypeScript service enabling secure, multi-provider media management for the PropSpaceX platform. Features include automatic image optimization via Sharp, abstraction of storage providers (AWS S3, Cloudinary), and dual-protocol access (gRPC for internal microservices, REST for external clients) to ensure high-performance asset delivery.',
     category: 'API Development',
     tags: ['NodeJS', 'Typescript', 'AWS S3', 'Cloudinary', 'Sharp', 'Express', 'MongoDB', 'Mongoose', 'gRPC', 'Docker'],
-    metrics: { label: '99.9%', sublabel: 'Uptime' },
+    // metrics: { label: '99.9%', sublabel: 'Uptime' },
     featured: false,
+    github: 'https://github.com/fredrickanyanwu/propspacex-media-service',
   },
   {
     id: 9,
     slug: 'propspacex-mail-service',
     title: 'PropSpaceX Mail Service',
-    description: 'A high-performance notification microservice built with Node.js and TypeScript. Designed for reliability, it utilizes RabbitMQ for asynchronous job processing, gRPC for low-latency communication, and Nodemailer for transactional email delivery (e.g., verification, welcome). Features robust fault tolerance with exponential backoff retries and Dead Letter Queues (DLQ).',
+    description: 'A high-performance mail microservice built with Node.js and TypeScript. Designed for reliability, it utilizes RabbitMQ for asynchronous job processing, gRPC for low-latency communication, and Nodemailer for transactional email delivery (e.g., verification, welcome). Features robust fault tolerance with exponential backoff retries and Dead Letter Queues (DLQ).',
     category: 'API Development',
     tags: ['Node.js', 'Express', 'MongoDB', 'Mongoose', 'RabbitMQ', 'gRPC', 'Nodemailer', 'Docker'],
-    metrics: { label: '$1M+', sublabel: 'Processed' },
+    // metrics: { label: '$1M+', sublabel: 'Processed' },
     featured: false,
+    github: 'https://github.com/fredrickanyanwu/propspacex-mail-service',
   },
   {
     id: 10,
@@ -106,8 +115,9 @@ const projects = [
     description: 'Payment processing service integrating Stripe, Paystack, and Flutterwave with webhook handling and reconciliation.',
     category: 'API Development',
     tags: ['NestJS', 'Express', 'MongoDB', 'Mongoose', 'Webhooks', 'Flutterwave API', 'Paystack API', 'Stripe API', 'Docker'],
-    metrics: { label: '$1M+', sublabel: 'Processed' },
+    // metrics: { label: '$1M+', sublabel: 'Processed' },
     featured: false,
+    github: 'https://github.com/fredrickanyanwu/propspacex-payment-service',
   },
 ];
 
@@ -161,10 +171,10 @@ export default function ProjectsPage() {
                 onMouseLeave={() => setHoveredProject(null)}
               >
                 <div className="project-header">
-                  <div className="project-metric">
-                    <span className="metric-value">{project.metrics.label}</span>
-                    <span className="metric-label">{project.metrics.sublabel}</span>
-                  </div>
+                  {/* <div className="project-metric">
+                    <span className="metric-value">{project?.metrics?.label}</span>
+                    <span className="metric-label">{project?.metrics?.sublabel}</span>
+                  </div> */}
                   {project.featured && project.architecture && (
                     <div className="project-architecture">
                       <span className="arch-label">SYSTEM ARCHITECTURE</span>
@@ -199,7 +209,7 @@ export default function ProjectsPage() {
                     <Link href={`/projects/${project.slug}`} className="btn btn-secondary btn-sm">
                       View Details
                     </Link>
-                    <a href="#" className="btn-link">
+                    <a href={`${project.github}`} className="btn-link">
                       <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
                         <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
                       </svg>

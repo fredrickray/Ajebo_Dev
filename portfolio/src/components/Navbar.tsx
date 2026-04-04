@@ -253,7 +253,7 @@ const Navbar = () => {
             top: 70px;
             left: 0;
             right: 0;
-            background: var(--bg-primary);
+            background: var(--bg-canvas-primary);
             flex-direction: column;
             padding: 24px;
             gap: 16px;

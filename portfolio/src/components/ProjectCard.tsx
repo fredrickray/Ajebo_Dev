@@ -83,7 +83,7 @@ const ProjectCard = ({
         .project-overlay {
           position: absolute;
           inset: 0;
-          background: rgba(13, 27, 30, 0.9);
+          background: rgba(18, 18, 18, 0.92);
           display: flex;
           align-items: center;
           justify-content: center;

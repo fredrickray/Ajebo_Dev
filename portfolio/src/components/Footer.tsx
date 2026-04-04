@@ -72,7 +72,7 @@ const Footer = () => {
 
       <style jsx>{`
         .footer {
-          background: var(--bg-secondary);
+          background: var(--bg-canvas-secondary);
           border-top: 1px solid var(--border);
           padding: 60px 0 24px;
           margin-top: auto;

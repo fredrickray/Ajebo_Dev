@@ -148,7 +148,7 @@ export default function Home() {
 
           <div className="featured-grid">
             <div className="project-item featured">
-              <div className="project-image">
+              {/* <div className="project-image">
                 <div className="terminal">
                   <div className="terminal-header">
                     <span className="terminal-dot red"></span>
@@ -164,11 +164,11 @@ export default function Home() {
                     </code>
                   </div>
                 </div>
-              </div>
+              </div> */}
               <div className="project-info">
-                <span className="project-category">MICROSERVICES</span>
-                <h3>Task Orchestrator Engine</h3>
-                <p>Distributed task scheduling system handling 100k+ jobs daily with fault tolerance.</p>
+                <span className="project-category">API GATEWAY</span>
+                <h3>PropSpaceX API Gateway</h3>
+                <p>An extensive api gateway to a property management system with comprehensive authentication, authorization, and rate limiting.</p>
                 <div className="project-tags">
                   <span>Node.js</span>
                   <span>Redis</span>
@@ -185,12 +185,15 @@ export default function Home() {
                 </div>
               </div>
               <div className="project-info">
-                <span className="project-category">API GATEWAY</span>
-                <h3>Auth Service</h3>
-                <p>OAuth2/JWT authentication service with rate limiting.</p>
+                <span className="project-category">DEV TOOLS</span>
+                <h3>OpenRDB Studio</h3>
+                <p>A free, open-source, cross-platform GUI for relational databases, designed to provide a modern, intuitive, and unrestricted developer experience</p>
                 <div className="project-tags">
-                  <span>NestJS</span>
-                  <span>JWT</span>
+                  <span>Rust</span>
+                  <span>Tauri</span>
+                  <span>React</span>
+                  <span>Typescript</span>
+                  <span>SQLx</span>
                 </div>
               </div>
             </div>
@@ -203,12 +206,15 @@ export default function Home() {
                 </div>
               </div>
               <div className="project-info">
-                <span className="project-category">DATA PIPELINE</span>
-                <h3>Event Processor</h3>
-                <p>Real-time event streaming with Kafka consumers.</p>
+                <span className="project-category">AI</span>
+                <h3>MarketLense</h3>
+                <p>An AI-powered stock decision support system based on market trends and real-world signals.</p>
                 <div className="project-tags">
+                  <span>FastAPI</span>
                   <span>Python</span>
-                  <span>Kafka</span>
+                  <span>PostgreSQL</span>
+                  <span>Random Forest</span>
+                  <span>LightGBM</span>
                 </div>
               </div>
             </div>
@@ -321,7 +327,7 @@ export default function Home() {
         /* Stats Section */
         .stats {
           padding: 60px 0;
-          background: var(--bg-secondary);
+          background: var(--bg-canvas-secondary);
           border-top: 1px solid var(--border);
           border-bottom: 1px solid var(--border);
         }
@@ -353,7 +359,7 @@ export default function Home() {
         /* Technical Focus */
         .technical-focus {
           padding: 100px 0;
-          background: var(--bg-primary);
+          background: var(--bg-canvas-primary);
         }
 
         .focus-container {
@@ -448,7 +454,7 @@ export default function Home() {
         /* Featured Projects */
         .featured {
           padding: 100px 0;
-          background: var(--bg-secondary);
+          background: var(--bg-canvas-secondary);
         }
 
         .featured-container {
@@ -584,7 +590,7 @@ export default function Home() {
 
         .project-tags span {
           padding: 4px 10px;
-          background: var(--bg-secondary);
+          background: var(--bg-canvas-secondary);
           color: var(--text-muted);
           border-radius: 4px;
           font-size: 12px;
@@ -597,7 +603,7 @@ export default function Home() {
         /* CTA Section */
         .cta {
           padding: 100px 0;
-          background: var(--bg-primary);
+          background: var(--bg-canvas-primary);
         }
 
         .cta-container {

@@ -86,26 +86,25 @@ CREATE INDEX idx_queries_hash ON queries(sql_hash);`,
     id: 2,
     slug: 'marketlense',
     title: 'MarketLense',
-    subtitle: 'A free, open-source, cross-platform GUI for relational databases, designed to provide a modern, intuitive, and unrestricted developer experience',
-    description: 'A high-performance machine learning system for database query optimization. Built to analyze SQL patterns and suggest optimizations using Random Forest and LightGBM models.',
-    tags: ['Rust', 'Tauri', 'React', 'Typescript', 'SQLx'],
+    subtitle: 'An AI-powered stock decision support system based on market trends and real-world signals.',
+    description: 'An AI-powered stock decision support system based on market trends and real-world signals.',
+    tags: ['FastAPI', 'Python', 'PostgreSQL', 'Random Forest', 'LightGBM'],
     githubUrl: 'https://github.com/fredrickray/marketlense',
     sections: ['System Architecture', 'Engineering Challenges', 'Database Design', 'Trade-offs & Decisions'],
     architecture: {
-      description: 'The architecture leverages a microservices pattern using FastAPI for the REST API, with dedicated services for feature extraction, model inference, and optimization suggestions.',
+      description: 'MarketLense is a machine learning system that analyzes stock market trends and real-world signals to provide data-driven investment insights. It uses a combination of machine learning models and real-time data to generate predictions and recommendations.',
       nodes: [
         { name: 'React Frontend', description: 'React + TypeScript' },
-        { name: 'Rust Backend', description: 'Rust + SQLx' },
-        { name: 'Tauri', description: 'Cross-platform desktop application' },
-        { name: 'SQLx', description: 'Async SQL toolkit with PostgreSQL support' },
-        { name: 'Tokio', description: 'Async runtime for Rust' },
-        { name: 'Monaco Editor', description: "Code/SQL editor (VS Code's editor)" },
+        { name: 'FastAPI Backend', description: 'FastAPI + Python' },
+        { name: 'PostgreSQL', description: 'PostgreSQL' },
+        { name: 'LightGBM', description: "LightGBM" },
+        { name: 'Random Forest', description: "Random Forest" },
       ],
     },
     challenges: [
+      { title: 'Real-time Data Integration', description: 'Integrated real-time stock market data from multiple sources to provide up-to-date market trends and signals.' },
       { title: 'Model Training Pipeline', description: 'Designed an efficient training pipeline that processes SQL query patterns from production databases while ensuring data privacy and security compliance.' },
       { title: 'Low-Latency Inference', description: 'Optimized model inference to achieve <50ms prediction times by implementing model quantization and caching frequently accessed patterns.' },
-      { title: 'Feature Engineering', description: 'Developed robust SQL parsing to extract meaningful features from diverse query patterns across different database schemas.' },
       { title: 'Accuracy vs Speed', description: 'Balanced model complexity with inference speed requirements, using ensemble methods for accuracy while maintaining performance.' },
     ],
     databaseDesign: {
@@ -146,9 +145,9 @@ CREATE INDEX idx_queries_hash ON queries(sql_hash);`,
     githubUrl: 'https://github.com/fredrickray/neuroqo',
     sections: ['System Architecture', 'Engineering Challenges', 'Database Design', 'Trade-offs & Decisions'],
     architecture: {
-      description: 'The architecture leverages a microservices pattern using FastAPI for the REST API, with dedicated services for feature extraction, model inference, and optimization suggestions.',
+      description: 'NeuroQO is a machine learning system that analyzes SQL query patterns and suggests optimizations using Random Forest and LightGBM models. It uses a combination of machine learning models and real-time data to generate predictions and recommendations.',
       nodes: [
-        { name: 'API Gateway', description: 'FastAPI REST endpoints' },
+        { name: 'FastAPI REST endpoints', description: 'FastAPI REST endpoints' },
         { name: 'Feature Extractor', description: 'SQL parsing & analysis' },
         { name: 'ML Engine', description: 'Model inference' },
         { name: 'Optimization Service', description: 'Query suggestions' },
@@ -768,7 +767,7 @@ export default function ProjectDetailPage() {
       <style jsx>{`
         .project-detail-page {
           min-height: 100vh;
-          background: var(--bg-primary);
+          background: var(--bg-canvas-primary);
           color: var(--text-primary);
         }
 
@@ -782,7 +781,7 @@ export default function ProjectDetailPage() {
         .project-header {
           padding: 40px 0 32px;
           border-bottom: 1px solid var(--border);
-          background: var(--bg-secondary);
+          background: var(--bg-canvas-secondary);
         }
 
         .breadcrumb {
@@ -900,7 +899,7 @@ export default function ProjectDetailPage() {
           flex-shrink: 0;
           padding: 32px 24px;
           border-right: 1px solid var(--border);
-          background: var(--bg-secondary);
+          background: var(--bg-canvas-secondary);
         }
 
         .sidebar-label {
@@ -945,7 +944,7 @@ export default function ProjectDetailPage() {
         .main-content {
           flex: 1;
           padding: 32px 48px;
-          background: var(--bg-primary);
+          background: var(--bg-canvas-primary);
         }
 
         .section {
@@ -988,7 +987,7 @@ export default function ProjectDetailPage() {
         }
 
         .node-box {
-          background: var(--bg-secondary);
+          background: var(--bg-canvas-secondary);
           border: 1px solid var(--border);
           border-radius: 8px;
           padding: 16px 24px;
@@ -1125,7 +1124,7 @@ export default function ProjectDetailPage() {
           grid-template-columns: 150px 150px 1fr;
           gap: 24px;
           padding: 16px 24px;
-          background: var(--bg-secondary);
+          background: var(--bg-canvas-secondary);
           border-bottom: 1px solid var(--border);
           font-size: 12px;
           font-weight: 600;

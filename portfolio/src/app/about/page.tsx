@@ -26,7 +26,14 @@ const functionalStack = [
 
 const timeline = [
   {
-    year: '12/2024 – present',
+    year: '03/2026 – present',
+    role: 'Backend Engineer',
+    company: 'Psychspace',
+    description: 'Architecting and developing scalable backend systems for a mental health platform. Implementing secure data handling, API integrations, and performance optimizations.',
+    highlights: ['Scalable Backend Systems', 'Secure Data Handling', 'API Integrations', 'Performance Optimizations', 'Microservice'],
+  },
+  {
+    year: '12/2024 – 02/2026',
     role: 'Backend Engineer | Team Lead',
     company: 'Claymore Limited',
     description: 'Leading backend architecture decisions and mentoring junior engineers. Designing scalable microservices and implementing CI/CD pipelines.',
@@ -252,7 +259,7 @@ export default function AboutPage() {
         /* Hero */
         .about-hero {
           padding: 100px 0 80px;
-          background: var(--bg-primary);
+          background: var(--bg-canvas-primary);
         }
 
         .hero-content {
@@ -276,7 +283,7 @@ export default function AboutPage() {
         /* Stack Section */
         .stack-section {
           padding: 100px 0;
-          background: var(--bg-secondary);
+          background: var(--bg-canvas-secondary);
         }
 
         .stack-grid {
@@ -321,7 +328,7 @@ export default function AboutPage() {
         /* Skills */
         .skills-section {
           padding: 100px 0;
-          background: var(--bg-primary);
+          background: var(--bg-canvas-primary);
         }
 
         .skills-grid {
@@ -371,7 +378,7 @@ export default function AboutPage() {
         /* Timeline */
         .timeline-section {
           padding: 100px 0;
-          background: var(--bg-secondary);
+          background: var(--bg-canvas-secondary);
         }
 
         .timeline {
@@ -461,7 +468,7 @@ export default function AboutPage() {
 
         .highlight-tag {
           padding: 4px 10px;
-          background: var(--bg-secondary);
+          background: var(--bg-canvas-secondary);
           color: var(--text-muted);
           border-radius: 4px;
           font-size: 12px;
@@ -470,7 +477,7 @@ export default function AboutPage() {
         /* Approach */
         .approach-section {
           padding: 100px 0;
-          background: var(--bg-primary);
+          background: var(--bg-canvas-primary);
         }
 
         .approach-grid {

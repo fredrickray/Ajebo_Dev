@@ -223,7 +223,7 @@ export default function ContactPage() {
       <style jsx>{`
         .contact-page {
           min-height: 100vh;
-          background: var(--bg-primary);
+          background: var(--bg-canvas-primary);
         }
 
         .container {
@@ -397,7 +397,7 @@ export default function ContactPage() {
         select {
           width: 100%;
           padding: 14px 16px;
-          background: var(--bg-secondary);
+          background: var(--bg-canvas-secondary);
           border: 1px solid var(--border);
           border-radius: 8px;
           color: var(--text-primary);
@@ -468,14 +468,18 @@ export default function ContactPage() {
         /* Map Section */
         .map-section {
           height: 300px;
-          background: var(--bg-secondary);
+          background: var(--bg-canvas-secondary);
           position: relative;
         }
 
         .map-placeholder {
           width: 100%;
           height: 100%;
-          background: linear-gradient(135deg, #0D1B1E 0%, #1a3a45 100%);
+          background: linear-gradient(
+            135deg,
+            var(--bg-primary) 0%,
+            var(--bg-card) 100%
+          );
           position: relative;
         }
 

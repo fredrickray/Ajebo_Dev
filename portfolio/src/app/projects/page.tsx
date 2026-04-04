@@ -250,7 +250,7 @@ export default function ProjectsPage() {
         /* Hero */
         .projects-hero {
           padding: 80px 0 60px;
-          background: var(--bg-primary);
+          background: var(--bg-canvas-primary);
           text-align: center;
         }
 
@@ -283,7 +283,7 @@ export default function ProjectsPage() {
         /* Filter */
         .projects-filter {
           padding: 24px 0;
-          background: var(--bg-secondary);
+          background: var(--bg-canvas-secondary);
           border-top: 1px solid var(--border);
           border-bottom: 1px solid var(--border);
           position: sticky;
@@ -324,7 +324,7 @@ export default function ProjectsPage() {
         /* Projects Grid */
         .projects-grid-section {
           padding: 60px 0;
-          background: var(--bg-primary);
+          background: var(--bg-canvas-primary);
         }
 
         .projects-grid {
@@ -519,7 +519,7 @@ export default function ProjectsPage() {
         /* CTA */
         .projects-cta {
           padding: 80px 0;
-          background: var(--bg-secondary);
+          background: var(--bg-canvas-secondary);
         }
 
         .cta-box {

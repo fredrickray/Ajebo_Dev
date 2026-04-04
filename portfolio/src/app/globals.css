@@ -32,6 +32,10 @@
   /* Navbar */
   --navbar-bg: rgba(248, 246, 243, 0.95);
 
+  /* Full-bleed surfaces (includes dot grid in dark theme) */
+  --bg-canvas-primary: var(--bg-primary);
+  --bg-canvas-secondary: var(--bg-secondary);
+
   /* Container */
   --container-max: 1280px;
   --section-padding: 80px;
@@ -44,12 +48,20 @@
   --primary-light: #14D9D3;
   --primary-dark: #089A96;
 
-  /* Background Colors - Dark Theme */
-  --bg-primary: #0D1B1E;
-  --bg-secondary: #0F2027;
-  --bg-card: #132931;
-  --bg-card-hover: #1A3A45;
-  --bg-hero: linear-gradient(180deg, #0D1B1E 0%, #0F2027 100%);
+  /* Background Colors - Dark Theme (space black + subtle dot canvas) */
+  --bg-primary: #121212;
+  --bg-secondary: #0d0d0d;
+  --bg-card: #161616;
+  --bg-card-hover: #1f1f1f;
+  --bg-dot-layer: radial-gradient(
+      rgba(255, 255, 255, 0.055) 1px,
+      transparent 1px
+    )
+    0 0 / 22px 22px;
+  --bg-hero: var(--bg-dot-layer),
+    linear-gradient(180deg, #121212 0%, #0d0d0d 100%);
+  --bg-canvas-primary: var(--bg-dot-layer), #121212;
+  --bg-canvas-secondary: var(--bg-dot-layer), #0d0d0d;
 
   /* Text Colors */
   --text-primary: #FFFFFF;
@@ -57,16 +69,16 @@
   --text-muted: #64748B;
 
   /* Border Colors */
-  --border: rgba(10, 186, 181, 0.2);
-  --border-hover: rgba(10, 186, 181, 0.4);
+  --border: rgba(255, 255, 255, 0.08);
+  --border-hover: rgba(10, 186, 181, 0.45);
 
   /* Shadows */
-  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.2);
-  --shadow-card: 0 4px 24px rgba(0, 0, 0, 0.3);
-  --shadow-glow: 0 0 20px rgba(10, 186, 181, 0.3);
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow-card: 0 4px 24px rgba(0, 0, 0, 0.45);
+  --shadow-glow: 0 0 20px rgba(10, 186, 181, 0.25);
 
   /* Navbar */
-  --navbar-bg: rgba(13, 27, 30, 0.95);
+  --navbar-bg: rgba(18, 18, 18, 0.92);
 
   /* Container */
   --container-max: 1280px;
@@ -84,7 +96,7 @@ html {
 }
 
 body {
-  background: var(--bg-primary);
+  background: var(--bg-canvas-primary);
   color: var(--text-primary);
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
   line-height: 1.6;

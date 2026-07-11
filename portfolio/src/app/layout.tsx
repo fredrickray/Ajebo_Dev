@@ -1,22 +1,43 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Syne, IBM_Plex_Sans, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 import { Navbar, Footer } from "@/components";
 import { ThemeProvider } from "@/context/ThemeContext";
 
-const inter = Inter({
-  variable: "--font-inter",
+const syne = Syne({
+  variable: "--font-display",
   subsets: ["latin"],
+  weight: ["500", "600", "700", "800"],
+});
+
+const plexSans = IBM_Plex_Sans({
+  variable: "--font-body",
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
+});
+
+const plexMono = IBM_Plex_Mono({
+  variable: "--font-mono",
+  subsets: ["latin"],
+  weight: ["400", "500"],
 });
 
 export const metadata: Metadata = {
-  title: "Ajebo Dev | Backend Engineer & System Architect",
-  description: "A passionate backend engineer specializing in building robust, scalable, and high-performance systems. Expert in distributed systems, API design, and database architecture.",
-  keywords: ["backend engineer", "system architect", "API design", "distributed systems", "Node.js", "Python", "PostgreSQL"],
-  authors: [{ name: "Ajebo Dev" }],
+  title: "AjeboDev | Backend Engineer",
+  description:
+    "Backend engineer building APIs, distributed systems, and data infrastructure. PropSpaceX, OpenRDB, NeuroQO.",
+  keywords: [
+    "backend engineer",
+    "distributed systems",
+    "API design",
+    "Node.js",
+    "Python",
+    "PostgreSQL",
+  ],
+  authors: [{ name: "Fredrick Anyanwu" }],
   openGraph: {
-    title: "Ajebo Dev | Backend Engineer & System Architect",
-    description: "Building robust, scalable, and high-performance backend systems.",
+    title: "AjeboDev | Backend Engineer",
+    description: "APIs, distributed systems, and data infrastructure.",
     type: "website",
   },
 };
@@ -28,10 +49,17 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${inter.variable}`}>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t);}catch(e){}})();`,
+          }}
+        />
+      </head>
+      <body className={`${syne.variable} ${plexSans.variable} ${plexMono.variable}`}>
         <ThemeProvider>
           <Navbar />
-          <main style={{ paddingTop: '70px', minHeight: '100vh' }}>
+          <main style={{ paddingTop: "var(--nav-height)", minHeight: "100vh" }}>
             {children}
           </main>
           <Footer />

@@ -8,7 +8,6 @@ const Footer = () => {
   const socialLinks = [
     { name: 'GitHub', href: 'https://github.com/fredrickray' },
     { name: 'LinkedIn', href: 'https://linkedin.com/in/fredrickanyanwu2' },
-    { name: 'Twitter', href: 'https://twitter.com' },
   ];
 
   const quickLinks = [
@@ -74,12 +73,12 @@ const Footer = () => {
         .footer {
           background: var(--bg-canvas-secondary);
           border-top: 1px solid var(--border);
-          padding: 60px 0 24px;
+          padding: 56px 0 24px;
           margin-top: auto;
         }
 
         .footer-container {
-          max-width: 1280px;
+          max-width: var(--container-max);
           margin: 0 auto;
           padding: 0 24px;
         }
@@ -104,7 +103,11 @@ const Footer = () => {
 
         .logo-icon {
           color: var(--primary);
-          font-family: 'Fira Code', monospace;
+          font-family: var(--font-mono), monospace;
+        }
+
+        .logo-text {
+          font-family: var(--font-display), system-ui, sans-serif;
         }
 
         .footer-desc {

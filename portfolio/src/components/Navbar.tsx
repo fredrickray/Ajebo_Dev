@@ -98,15 +98,18 @@ const Navbar = () => {
           left: 0;
           right: 0;
           z-index: 1000;
-          padding: 16px 0;
+          height: var(--nav-height);
+          display: flex;
+          align-items: center;
           background: var(--navbar-bg);
-          backdrop-filter: blur(10px);
+          backdrop-filter: blur(14px);
           border-bottom: 1px solid var(--border);
           transition: background 0.3s ease;
         }
 
         .navbar-container {
-          max-width: 1280px;
+          max-width: var(--container-max);
+          width: 100%;
           margin: 0 auto;
           padding: 0 24px;
           display: flex;
@@ -117,10 +120,12 @@ const Navbar = () => {
         .logo {
           display: flex;
           align-items: center;
-          gap: 4px;
+          gap: 2px;
+          font-family: var(--font-display), system-ui, sans-serif;
           font-weight: 700;
-          font-size: 18px;
+          font-size: 17px;
           color: var(--text-primary);
+          letter-spacing: -0.02em;
         }
 
         .logo:hover {
@@ -129,20 +134,21 @@ const Navbar = () => {
 
         .logo-icon {
           color: var(--primary);
-          font-family: 'Fira Code', monospace;
+          font-family: var(--font-mono), monospace;
+          font-weight: 500;
         }
 
         .nav-links {
           display: flex;
           align-items: center;
-          gap: 32px;
+          gap: 28px;
         }
 
         .nav-link {
           font-size: 14px;
           font-weight: 500;
           color: var(--text-secondary);
-          transition: color 0.3s ease;
+          transition: color 0.25s ease;
           position: relative;
         }
 
@@ -154,12 +160,11 @@ const Navbar = () => {
         .nav-link.active::after {
           content: '';
           position: absolute;
-          bottom: -4px;
+          bottom: -6px;
           left: 0;
           right: 0;
-          height: 2px;
+          height: 1px;
           background: var(--primary);
-          border-radius: 1px;
         }
 
         .nav-actions {
@@ -174,12 +179,12 @@ const Navbar = () => {
           display: flex;
           align-items: center;
           justify-content: center;
-          background: var(--bg-card);
+          background: transparent;
           border: 1px solid var(--border);
-          border-radius: 8px;
+          border-radius: var(--radius);
           cursor: pointer;
           color: var(--text-secondary);
-          transition: all 0.3s ease;
+          transition: all 0.25s ease;
         }
 
         .theme-toggle:hover {
@@ -250,7 +255,7 @@ const Navbar = () => {
         @media (max-width: 768px) {
           .nav-links {
             position: fixed;
-            top: 70px;
+            top: var(--nav-height);
             left: 0;
             right: 0;
             background: var(--bg-canvas-primary);

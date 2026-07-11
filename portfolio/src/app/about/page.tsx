@@ -1,225 +1,236 @@
 'use client';
 
-const skills = {
-  backend: [
-    'Node.js', 'Express', 'NestJS', 'Python', 'FastAPI', 'Django',
-    'PostgreSQL', 'MySQL', 'MongoDB', 'Redis', 'GraphQL', 'REST APIs'
-  ],
-  infrastructure: [
-    'Docker', 'Kubernetes', 'AWS', 'GCP', 'Azure',
-    'GitHub Actions', 'GitLab CI', 'Nginx', 'Load Balancing'
-  ],
-  architecture: [
-    'Microservices', 'Event-Driven Architecture', 'Message Queues',
-    'Kafka', 'RabbitMQ', 'System Design', 'API Gateway Patterns'
-  ],
-};
+import Link from 'next/link';
+import Reveal from '@/components/Reveal';
 
-const functionalStack = [
-  { category: 'Languages', items: ['TypeScript', 'Python', 'Go', 'SQL'] },
-  { category: 'Frameworks', items: ['NestJS', 'Express', 'FastAPI', 'Django'] },
-  { category: 'Databases', items: ['PostgreSQL', 'MongoDB', 'Redis', 'Elasticsearch'] },
-  { category: 'Architecture', items: ['Microservices', 'Event-Driven', 'Serverless'] },
-  { category: 'Auth & Security', items: ['OAuth2', 'JWT', 'RBAC', 'API Keys'] },
-  { category: 'DevOps & Quality', items: ['Docker', 'K8s', 'CI/CD', 'Testing'] },
+const stack = [
+  {
+    label: 'Languages',
+    items: ['JavaScript', 'TypeScript', 'Python'],
+  },
+  {
+    label: 'Backend & Frameworks',
+    items: ['Node.js', 'Express.js', 'NestJS', 'FastAPI', 'Django', 'Socket.io'],
+  },
+  {
+    label: 'Databases',
+    items: ['PostgreSQL', 'MongoDB', 'MySQL', 'Knex.js', 'Database Design'],
+  },
+  {
+    label: 'Architecture & Systems',
+    items: ['Microservices', 'System Design', 'JWT / RBAC', 'gRPC', 'Auth Systems'],
+  },
+  {
+    label: 'DevOps & Cloud',
+    items: ['AWS', 'DigitalOcean', 'CI/CD', 'Git', 'GitHub'],
+  },
+  {
+    label: 'Frontend',
+    items: ['React.js', 'HTML', 'CSS', 'Tailwind CSS'],
+  },
 ];
 
 const timeline = [
   {
-    year: '03/2026 – present',
+    year: '02/2026 – Present',
     role: 'Backend Engineer',
-    company: 'Psychspace',
-    description: 'Architecting and developing scalable backend systems for a mental health platform. Implementing secure data handling, API integrations, and performance optimizations.',
-    highlights: ['Scalable Backend Systems', 'Secure Data Handling', 'API Integrations', 'Performance Optimizations', 'Microservice'],
+    company: 'PsychSpace',
+    location: 'Canada',
+    description:
+      'Architected two interoperating backends — NestJS/MongoDB product API and Django/PostgreSQL scoring engine — linked by RS256 service JWTs. Built psychometric scoring, RBAC, S3 uploads, and Swagger docs.',
   },
   {
-    year: '12/2024 – 02/2026',
-    role: 'Backend Engineer | Team Lead',
+    year: '12/2024 – 01/2026',
+    role: 'Backend Engineer · Engineering Team Lead',
     company: 'Claymore Limited',
-    description: 'Leading backend architecture decisions and mentoring junior engineers. Designing scalable microservices and implementing CI/CD pipelines.',
-    highlights: ['Microservices', 'Team Leadership', 'Architecture'],
+    location: 'Lagos, Nigeria',
+    description:
+      'Led sprint planning, reviews, and architecture for Stakeholders Connect. REST APIs, Socket.io chat/notifications, JWT/RBAC, MongoDB optimization, and AWS CI/CD with Joi validation.',
   },
   {
     year: '07/2024 – 09/2024',
-    role: 'Backend Engineer (Intern)',
-    company: 'TechVibes Ltd.',
-    description: 'Built RESTful APIs and integrated third-party services. Optimized database queries reducing response times by 40%.',
-    highlights: ['REST APIs', 'Database Optimization'],
+    role: 'Backend Developer (Intern)',
+    company: 'TechVibes Ltd',
+    location: 'Abuja, Nigeria',
+    description:
+      'Swift Ride platform — ride/fare APIs with Google Maps/Mapbox, WebSocket driver tracking, MFA (SMS/email/authenticator), and Cloudinary batch image processing.',
   },
   {
-    year: '01/2024 – 12/2024',
-    role: 'Backend Engineer',
-    company: 'SustainaFinance Data Nexus',
-    description: 'Developed data processing pipelines and real-time analytics systems for financial data aggregation.',
-    highlights: ['Data Pipelines', 'Real-time Analytics'],
+    year: '01/2024 – 01/2025',
+    role: 'Backend Developer',
+    company: 'SustainaFinance DataNexus',
+    location: 'Esch-sur-Alzette, Luxembourg',
+    description:
+      'ESG and financial data pipelines — ingest, harmonize, and validate multi-source metrics with real-time calculation logic and governance controls.',
   },
   {
-    year: '01/2024 – 12/2024',
+    year: '01/2024 – 03/2025',
     role: 'Backend Developer',
     company: 'Padding Technologies',
-    description: 'Implemented authentication systems and payment integrations. Built webhook handlers for event processing.',
-    highlights: ['Auth Systems', 'Payment Integration'],
+    location: 'Lagos, Nigeria',
+    description:
+      'Evolution and Officing backends on Node.js, Express, and PostgreSQL — schema design, complex SQL, tests, and cross-functional delivery.',
   },
   {
     year: '06/2023 – 10/2023',
     role: 'Backend Developer (Intern)',
     company: 'HNG Tech',
-    description: 'Participated in intensive backend development bootcamp. Built collaborative projects with distributed teams.',
-    highlights: ['Node.js', 'PostgreSQL', 'API Design'],
+    location: '',
+    description:
+      'Screen-recording Chrome extension backend; contributed auth and payment microservices for a large e-commerce platform.',
   },
   {
     year: '06/2022 – 09/2022',
-    role: 'FullStack Developer (Intern)',
+    role: 'Full-Stack Developer (Intern)',
     company: 'Elatech Limited',
-    description: 'Developed full-stack applications with React and Node.js. First exposure to production deployments.',
-    highlights: ['Full Stack', 'React', 'Node.js'],
+    location: 'Lagos, Nigeria',
+    description:
+      'Weather app with third-party APIs and a Paystack clone covering core payment workflows with live Paystack integration.',
   },
 ];
 
 export default function AboutPage() {
   return (
     <div className="about-page">
-      {/* Hero Section */}
       <section className="about-hero">
         <div className="container">
-          <div className="hero-content">
-            <span className="section-badge">ABOUT ME</span>
+          <Reveal>
+            <p className="section-label">About</p>
             <h1>
-              Technical Credibility
+              Backend engineer
+              <br />
+              building scalable,
+              <br />
+              secure systems
             </h1>
-            <p className="hero-desc">
-              A results-driven backend engineer with experience designing, building,
-              and deploying production-grade systems. I specialize in creating
-              scalable APIs, optimizing database performance, and architecting
-              distributed systems that handle real-world traffic.
+            <p className="lede">
+              I&apos;m Fredrick — based in Abuja, Nigeria. I design server-side
+              architectures, REST APIs, database optimization, and auth systems.
+              Core stack: Node.js, Express, NestJS, MongoDB, PostgreSQL, and FastAPI,
+              with React when frontend integration is needed. Experienced leading
+              engineering teams through delivery.
             </p>
-          </div>
+          </Reveal>
         </div>
       </section>
 
-      {/* Functional Stack */}
       <section className="stack-section">
         <div className="container">
-          <div className="section-header">
-            <span className="section-badge">FUNCTIONAL STACK</span>
-            <h2>Core Technologies</h2>
-          </div>
-
+          <Reveal>
+            <p className="section-label">Skills</p>
+            <h2 className="section-title">What I work with</h2>
+          </Reveal>
           <div className="stack-grid">
-            {functionalStack.map((stack, idx) => (
-              <div key={idx} className="stack-card">
-                <h3>{stack.category}</h3>
-                <div className="stack-items">
-                  {stack.items.map((item, i) => (
-                    <span key={i} className="stack-item">{item}</span>
-                  ))}
+            {stack.map((group, i) => (
+              <Reveal key={group.label} delay={i * 50}>
+                <div className="stack-group">
+                  <h3 className="mono">{group.label}</h3>
+                  <ul>
+                    {group.items.map((item) => (
+                      <li key={item}>{item}</li>
+                    ))}
+                  </ul>
                 </div>
-              </div>
+              </Reveal>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Skills Section */}
-      <section className="skills-section">
-        <div className="container">
-          <div className="section-header">
-            <span className="section-badge">PROFICIENCY</span>
-            <h2>Technical Skills</h2>
-          </div>
-
-          <div className="skills-grid">
-            <div className="skill-category">
-              <h3>Backend Development</h3>
-              <div className="skill-tags">
-                {skills.backend.map((skill, idx) => (
-                  <span key={idx} className="skill-tag">{skill}</span>
-                ))}
-              </div>
-            </div>
-
-            <div className="skill-category">
-              <h3>Infrastructure & DevOps</h3>
-              <div className="skill-tags">
-                {skills.infrastructure.map((skill, idx) => (
-                  <span key={idx} className="skill-tag">{skill}</span>
-                ))}
-              </div>
-            </div>
-
-            <div className="skill-category">
-              <h3>Architecture & Design</h3>
-              <div className="skill-tags">
-                {skills.architecture.map((skill, idx) => (
-                  <span key={idx} className="skill-tag">{skill}</span>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Experience Timeline */}
       <section className="timeline-section">
         <div className="container">
-          <div className="section-header">
-            <span className="section-badge">PROFESSIONAL IMPACT</span>
-            <h2>Experience</h2>
-          </div>
-
+          <Reveal>
+            <p className="section-label">Experience</p>
+            <h2 className="section-title">Where I&apos;ve built</h2>
+          </Reveal>
           <div className="timeline">
-            {timeline.map((item, idx) => (
-              <div key={idx} className="timeline-item">
-                <div className="timeline-marker"></div>
-                <div className="timeline-content">
-                  <div className="timeline-header">
-                    <span className="timeline-year">{item.year}</span>
+            {timeline.map((item, i) => (
+              <Reveal key={`${item.company}-${item.year}`} delay={i * 40}>
+                <article className="timeline-item">
+                  <div className="meta">
+                    <span className="year mono">{item.year}</span>
+                    {item.location ? (
+                      <span className="loc mono">{item.location}</span>
+                    ) : null}
                   </div>
-                  <h3>{item.role}</h3>
-                  <span className="timeline-company">@ {item.company}</span>
-                  <p>{item.description}</p>
-                  <div className="timeline-highlights">
-                    {item.highlights.map((h, i) => (
-                      <span key={i} className="highlight-tag">{h}</span>
-                    ))}
+                  <div>
+                    <h3>
+                      {item.role}
+                      <span className="company"> · {item.company}</span>
+                    </h3>
+                    <p>{item.description}</p>
                   </div>
-                </div>
-              </div>
+                </article>
+              </Reveal>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Approach Section */}
-      <section className="approach-section">
+      <section className="education">
         <div className="container">
-          <div className="section-header">
-            <span className="section-badge">ENGINEERING PRINCIPLES</span>
-            <h2>My Approach</h2>
-          </div>
+          <Reveal>
+            <p className="section-label">Education</p>
+            <h2 className="section-title">BSc, Computer Science</h2>
+            <p className="edu-meta mono">
+              Veritas University · 10/2022 – Present · Abuja, Nigeria
+            </p>
+            <p className="edu-desc">
+              Coursework in Algorithms &amp; Data Structures, Database Systems, and
+              Software Engineering.
+            </p>
+          </Reveal>
+        </div>
+      </section>
 
-          <div className="approach-grid">
-            <div className="approach-card">
-              <div className="approach-number">01</div>
-              <h3>Scalability First</h3>
-              <p>Design systems that can handle 10x traffic without architectural changes.</p>
-            </div>
-            <div className="approach-card">
-              <div className="approach-number">02</div>
-              <h3>Clean Architecture</h3>
-              <p>Maintainable, testable code following SOLID principles and clean code practices.</p>
-            </div>
-            <div className="approach-card">
-              <div className="approach-number">03</div>
-              <h3>Observability</h3>
-              <p>Comprehensive logging, monitoring, and alerting for production systems.</p>
-            </div>
-            <div className="approach-card">
-              <div className="approach-number">04</div>
-              <h3>Security Minded</h3>
-              <p>Security baked in from day one, not bolted on as an afterthought.</p>
-            </div>
+      <section className="principles">
+        <div className="container">
+          <Reveal>
+            <p className="section-label">Approach</p>
+            <h2 className="section-title">How I work</h2>
+          </Reveal>
+          <div className="principle-list">
+            {[
+              {
+                n: '01',
+                title: 'Design for failure',
+                text: 'Retries, timeouts, and clear ownership when a dependency drops.',
+              },
+              {
+                n: '02',
+                title: 'Make contracts explicit',
+                text: 'APIs and events that other services can depend on without guesswork.',
+              },
+              {
+                n: '03',
+                title: 'Measure before guessing',
+                text: 'Logs, metrics, and query plans beat intuition when latency slips.',
+              },
+            ].map((p, i) => (
+              <Reveal key={p.n} delay={i * 70}>
+                <div className="principle">
+                  <span className="n mono">{p.n}</span>
+                  <div>
+                    <h3>{p.title}</h3>
+                    <p>{p.text}</p>
+                  </div>
+                </div>
+              </Reveal>
+            ))}
           </div>
+          <Reveal delay={200}>
+            <div className="about-cta">
+              <Link href="/contact" className="btn btn-primary">
+                Get in touch
+              </Link>
+              <Link href="/projects" className="btn btn-secondary">
+                See projects
+              </Link>
+              <a href="/resume.pdf" download="Fredrick_Anyanwu_Resume.pdf" className="btn btn-secondary">
+                Download resume
+              </a>
+            </div>
+          </Reveal>
         </div>
       </section>
 
@@ -228,314 +239,190 @@ export default function AboutPage() {
           min-height: 100vh;
         }
 
-        .container {
-          max-width: 1280px;
-          margin: 0 auto;
-          padding: 0 24px;
-        }
-
-        .section-header {
-          text-align: center;
-          margin-bottom: 60px;
-        }
-
-        .section-badge {
-          display: inline-block;
-          padding: 6px 16px;
-          background: rgba(10, 186, 181, 0.1);
-          color: var(--primary);
-          border-radius: 20px;
-          font-size: 12px;
-          font-weight: 600;
-          letter-spacing: 1px;
-          margin-bottom: 16px;
-        }
-
-        .section-header h2 {
-          font-size: 36px;
-          font-weight: 700;
-        }
-
-        /* Hero */
         .about-hero {
-          padding: 100px 0 80px;
-          background: var(--bg-canvas-primary);
-        }
-
-        .hero-content {
-          max-width: 800px;
-          text-align: center;
-          margin: 0 auto;
+          padding: 80px 0 72px;
+          background: var(--bg-hero);
         }
 
         .about-hero h1 {
           font-size: clamp(36px, 6vw, 56px);
-          font-weight: 700;
           margin-bottom: 24px;
+          max-width: 720px;
         }
 
-        .hero-desc {
-          font-size: 18px;
+        .lede {
+          font-size: 17px;
           color: var(--text-secondary);
-          line-height: 1.8;
+          max-width: 580px;
+          line-height: 1.75;
         }
 
-        /* Stack Section */
         .stack-section {
-          padding: 100px 0;
+          padding: var(--section-padding) 0;
           background: var(--bg-canvas-secondary);
+          border-top: 1px solid var(--border);
         }
 
         .stack-grid {
+          margin-top: 40px;
           display: grid;
           grid-template-columns: repeat(3, 1fr);
-          gap: 24px;
+          gap: 0;
+          border-top: 1px solid var(--border);
         }
 
-        .stack-card {
-          background: var(--bg-card);
-          border: 1px solid var(--border);
-          border-radius: 16px;
-          padding: 28px;
+        .stack-group {
+          padding: 28px 24px 28px 0;
+          border-bottom: 1px solid var(--border);
         }
 
-        .stack-card h3 {
-          font-size: 14px;
-          font-weight: 600;
-          color: var(--text-secondary);
+        .stack-group h3 {
+          font-size: 11px;
+          letter-spacing: 0.1em;
           text-transform: uppercase;
-          letter-spacing: 1px;
+          color: var(--primary);
           margin-bottom: 16px;
-          padding-bottom: 12px;
-          border-bottom: 1px solid var(--border);
-        }
-
-        .stack-items {
-          display: flex;
-          flex-wrap: wrap;
-          gap: 8px;
-        }
-
-        .stack-item {
-          padding: 6px 12px;
-          background: rgba(10, 186, 181, 0.1);
-          color: var(--primary);
-          border-radius: 6px;
-          font-size: 13px;
           font-weight: 500;
         }
 
-        /* Skills */
-        .skills-section {
-          padding: 100px 0;
-          background: var(--bg-canvas-primary);
+        .stack-group ul {
+          list-style: none;
         }
 
-        .skills-grid {
-          display: grid;
-          grid-template-columns: repeat(3, 1fr);
-          gap: 40px;
+        .stack-group li {
+          font-size: 15px;
+          padding: 6px 0;
+          color: var(--text-primary);
         }
 
-        .skill-category {
-          background: var(--bg-card);
-          border: 1px solid var(--border);
-          border-radius: 16px;
-          padding: 32px;
-        }
-
-        .skill-category h3 {
-          font-size: 18px;
-          font-weight: 600;
-          margin-bottom: 24px;
-          padding-bottom: 16px;
-          border-bottom: 1px solid var(--border);
-        }
-
-        .skill-tags {
-          display: flex;
-          flex-wrap: wrap;
-          gap: 10px;
-        }
-
-        .skill-tag {
-          padding: 10px 16px;
-          background: rgba(10, 186, 181, 0.1);
-          color: var(--primary);
-          border: 1px solid rgba(10, 186, 181, 0.2);
-          border-radius: 8px;
-          font-size: 14px;
-          font-weight: 500;
-          transition: all 0.3s ease;
-        }
-
-        .skill-tag:hover {
-          background: rgba(10, 186, 181, 0.2);
-          border-color: var(--primary);
-          transform: translateY(-2px);
-        }
-
-        /* Timeline */
         .timeline-section {
-          padding: 100px 0;
-          background: var(--bg-canvas-secondary);
+          padding: var(--section-padding) 0;
+          background: var(--bg-canvas-primary);
         }
 
         .timeline {
-          position: relative;
-          max-width: 900px;
-          margin: 0 auto;
-        }
-
-        .timeline::before {
-          content: '';
-          position: absolute;
-          left: 0;
-          top: 0;
-          bottom: 0;
-          width: 2px;
-          background: var(--border);
+          margin-top: 40px;
+          max-width: 860px;
+          border-top: 1px solid var(--border);
         }
 
         .timeline-item {
-          position: relative;
-          padding-left: 40px;
-          margin-bottom: 40px;
-        }
-
-        .timeline-item:last-child {
-          margin-bottom: 0;
-        }
-
-        .timeline-marker {
-          position: absolute;
-          left: -6px;
-          top: 4px;
-          width: 14px;
-          height: 14px;
-          background: var(--primary);
-          border-radius: 50%;
-          border: 3px solid var(--bg-secondary);
-        }
-
-        .timeline-content {
-          background: var(--bg-card);
-          border: 1px solid var(--border);
-          border-radius: 12px;
-          padding: 24px;
-        }
-
-        .timeline-header {
-          margin-bottom: 12px;
-        }
-
-        .timeline-year {
-          display: inline-block;
-          padding: 4px 12px;
-          background: rgba(10, 186, 181, 0.1);
-          color: var(--primary);
-          border-radius: 4px;
-          font-size: 13px;
-          font-weight: 600;
-          font-family: 'Fira Code', monospace;
-        }
-
-        .timeline-content h3 {
-          font-size: 18px;
-          font-weight: 600;
-          margin-bottom: 4px;
-        }
-
-        .timeline-company {
-          font-size: 14px;
-          color: var(--text-muted);
-          display: block;
-          margin-bottom: 12px;
-        }
-
-        .timeline-content p {
-          font-size: 14px;
-          color: var(--text-secondary);
-          line-height: 1.6;
-          margin-bottom: 16px;
-        }
-
-        .timeline-highlights {
-          display: flex;
-          flex-wrap: wrap;
-          gap: 8px;
-        }
-
-        .highlight-tag {
-          padding: 4px 10px;
-          background: var(--bg-canvas-secondary);
-          color: var(--text-muted);
-          border-radius: 4px;
-          font-size: 12px;
-        }
-
-        /* Approach */
-        .approach-section {
-          padding: 100px 0;
-          background: var(--bg-canvas-primary);
-        }
-
-        .approach-grid {
           display: grid;
-          grid-template-columns: repeat(4, 1fr);
+          grid-template-columns: 180px 1fr;
           gap: 24px;
+          padding: 28px 0;
+          border-bottom: 1px solid var(--border);
         }
 
-        .approach-card {
-          padding: 32px 24px;
-          background: var(--bg-card);
-          border: 1px solid var(--border);
-          border-radius: 16px;
-          transition: all 0.3s ease;
+        .meta {
+          display: flex;
+          flex-direction: column;
+          gap: 6px;
+          padding-top: 4px;
         }
 
-        .approach-card:hover {
-          border-color: var(--primary);
+        .year {
+          font-size: 12px;
+          color: var(--text-muted);
         }
 
-        .approach-number {
-          font-size: 48px;
-          font-weight: 800;
+        .loc {
+          font-size: 11px;
           color: var(--primary);
-          opacity: 0.3;
-          margin-bottom: 16px;
-          font-family: 'Fira Code', monospace;
         }
 
-        .approach-card h3 {
+        .timeline-item h3 {
           font-size: 18px;
-          font-weight: 600;
           margin-bottom: 8px;
         }
 
-        .approach-card p {
-          font-size: 14px;
+        .company {
+          font-weight: 500;
           color: var(--text-secondary);
-          line-height: 1.6;
+          font-family: var(--font-body), sans-serif;
+          font-size: 16px;
         }
 
-        @media (max-width: 1024px) {
-          .stack-grid,
-          .skills-grid,
-          .approach-grid {
+        .timeline-item p {
+          font-size: 15px;
+          color: var(--text-secondary);
+          line-height: 1.65;
+        }
+
+        .education {
+          padding: 64px 0;
+          background: var(--bg-canvas-secondary);
+          border-top: 1px solid var(--border);
+        }
+
+        .edu-meta {
+          font-size: 13px;
+          color: var(--primary);
+          margin: 8px 0 12px;
+        }
+
+        .edu-desc {
+          color: var(--text-secondary);
+          max-width: 520px;
+        }
+
+        .principles {
+          padding: var(--section-padding) 0;
+          background: var(--bg-canvas-primary);
+          border-top: 1px solid var(--border);
+        }
+
+        .principle-list {
+          margin-top: 40px;
+          border-top: 1px solid var(--border);
+        }
+
+        .principle {
+          display: grid;
+          grid-template-columns: 64px 1fr;
+          gap: 20px;
+          padding: 28px 0;
+          border-bottom: 1px solid var(--border);
+        }
+
+        .n {
+          font-size: 13px;
+          color: var(--primary);
+          padding-top: 4px;
+        }
+
+        .principle h3 {
+          font-size: 20px;
+          margin-bottom: 6px;
+        }
+
+        .principle p {
+          font-size: 15px;
+          color: var(--text-secondary);
+          max-width: 480px;
+        }
+
+        .about-cta {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 12px;
+          margin-top: 40px;
+        }
+
+        @media (max-width: 900px) {
+          .stack-grid {
             grid-template-columns: repeat(2, 1fr);
           }
         }
 
         @media (max-width: 640px) {
-          .stack-grid,
-          .skills-grid,
-          .approach-grid {
+          .stack-grid {
             grid-template-columns: 1fr;
           }
 
-          .section-header h2 {
-            font-size: 28px;
+          .timeline-item {
+            grid-template-columns: 1fr;
+            gap: 8px;
           }
         }
       `}</style>

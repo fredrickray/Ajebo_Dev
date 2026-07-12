@@ -121,9 +121,9 @@ const Navbar = () => {
           display: flex;
           align-items: center;
           gap: 2px;
-          font-family: var(--font-display), system-ui, sans-serif;
+          font-family: var(--font-body), "Instrument Sans", system-ui, sans-serif;
           font-weight: 700;
-          font-size: 17px;
+          font-size: 16px;
           color: var(--text-primary);
           letter-spacing: -0.02em;
         }

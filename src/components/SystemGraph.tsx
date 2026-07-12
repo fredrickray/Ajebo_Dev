@@ -110,15 +110,15 @@ export default function SystemGraph() {
                 width="80"
                 height="32"
                 rx="2"
-                fill={lit ? 'rgba(46, 207, 154, 0.12)' : 'rgba(255,255,255,0.04)'}
-                stroke={lit ? 'var(--graph-node)' : 'rgba(255,255,255,0.12)'}
+                fill={lit ? 'var(--graph-node-lit-fill)' : 'var(--graph-node-idle-fill)'}
+                stroke={lit ? 'var(--graph-node)' : 'var(--graph-node-idle-stroke)'}
                 strokeWidth="1.25"
                 style={{ transition: 'all 0.3s ease' }}
               />
               <text
                 textAnchor="middle"
                 dominantBaseline="central"
-                fill={lit ? 'var(--graph-node)' : '#c5ced8'}
+                fill={lit ? 'var(--graph-node)' : 'var(--graph-node-idle-text)'}
                 fontSize="11"
                 fontFamily="var(--font-mono), monospace"
                 style={{ transition: 'fill 0.3s ease' }}
@@ -142,7 +142,7 @@ export default function SystemGraph() {
           height: 100%;
           min-height: 320px;
           background: var(--graph-surface);
-          border: 1px solid rgba(255, 255, 255, 0.08);
+          border: 1px solid var(--graph-border);
           display: flex;
           flex-direction: column;
           position: relative;
@@ -155,18 +155,11 @@ export default function SystemGraph() {
           inset: 0;
           background: radial-gradient(
               ellipse 70% 50% at 60% 45%,
-              rgba(46, 207, 154, 0.07),
+              var(--graph-glow),
               transparent 60%
             ),
-            linear-gradient(
-              rgba(255, 255, 255, 0.03) 1px,
-              transparent 1px
-            ),
-            linear-gradient(
-              90deg,
-              rgba(255, 255, 255, 0.03) 1px,
-              transparent 1px
-            );
+            linear-gradient(var(--graph-grid) 1px, transparent 1px),
+            linear-gradient(90deg, var(--graph-grid) 1px, transparent 1px);
           background-size: auto, 28px 28px, 28px 28px;
           pointer-events: none;
         }
@@ -176,7 +169,7 @@ export default function SystemGraph() {
           align-items: center;
           gap: 6px;
           padding: 12px 16px;
-          border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+          border-bottom: 1px solid var(--graph-chrome-border);
           position: relative;
           z-index: 1;
         }
@@ -223,7 +216,7 @@ export default function SystemGraph() {
           align-items: center;
           gap: 10px;
           padding: 12px 16px;
-          border-top: 1px solid rgba(255, 255, 255, 0.06);
+          border-top: 1px solid var(--graph-chrome-border);
           font-family: var(--font-mono), monospace;
           font-size: 11px;
           color: var(--graph-muted);

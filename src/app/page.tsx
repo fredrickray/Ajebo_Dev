@@ -174,28 +174,21 @@ export default function Home() {
           content: '';
           position: absolute;
           inset: 0;
-          background: linear-gradient(
-              90deg,
-              transparent 0%,
-              transparent 49.5%,
-              rgba(12, 16, 23, 0.04) 49.5%,
-              rgba(12, 16, 23, 0.04) 50.5%,
-              transparent 50.5%
-            ),
-            radial-gradient(ellipse 50% 40% at 20% 80%, var(--primary-soft), transparent 70%);
+          /* Soft glow only — no center divider */
+          background: radial-gradient(
+            ellipse 50% 40% at 20% 80%,
+            var(--primary-soft),
+            transparent 70%
+          );
           pointer-events: none;
         }
 
-        [data-theme='dark'] .hero-bg::after {
-          background: linear-gradient(
-              90deg,
-              transparent 0%,
-              transparent 49.5%,
-              rgba(255, 255, 255, 0.03) 49.5%,
-              rgba(255, 255, 255, 0.03) 50.5%,
-              transparent 50.5%
-            ),
-            radial-gradient(ellipse 50% 40% at 80% 30%, rgba(46, 207, 154, 0.08), transparent 70%);
+        :global([data-theme='dark']) .hero-bg::after {
+          background: radial-gradient(
+            ellipse 50% 40% at 80% 30%,
+            rgba(46, 207, 154, 0.08),
+            transparent 70%
+          );
         }
 
         .hero-grid {

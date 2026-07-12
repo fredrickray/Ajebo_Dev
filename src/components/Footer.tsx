@@ -107,7 +107,7 @@ const Footer = () => {
         }
 
         .logo-text {
-          font-family: var(--font-display), system-ui, sans-serif;
+          font-family: var(--font-body), "Instrument Sans", system-ui, sans-serif;
         }
 
         .footer-desc {

@@ -13,15 +13,20 @@ export default function Home() {
         <div className="hero-grid">
           <div className="hero-copy">
             <p className="brand mono">AjeboDev</p>
+            <p className="name-intro">my name is</p>
             <h1>
               Fredrick
               <br />
               Anyanwu
             </h1>
+            <p className="availability mono">
+              <span className="avail-dot" />
+              Available for new work
+            </p>
             <p className="role mono">Backend engineer · APIs &amp; distributed systems</p>
             <p className="lede">
-              I design and ship the systems behind products — gateways, services,
-              queues, and data stores that stay reliable under load.
+              I build the systems behind products — gateways, services, queues,
+              and data stores that stay reliable under load.
             </p>
             <div className="hero-cta">
               <Link href="/projects" className="btn btn-primary">
@@ -186,7 +191,7 @@ export default function Home() {
         :global([data-theme='dark']) .hero-bg::after {
           background: radial-gradient(
             ellipse 50% 40% at 80% 30%,
-            rgba(46, 207, 154, 0.08),
+            rgba(224, 160, 112, 0.08),
             transparent 70%
           );
         }
@@ -205,36 +210,70 @@ export default function Home() {
         }
 
         .brand {
-          font-size: 13px;
+          font-size: 12px;
           letter-spacing: 0.16em;
           text-transform: uppercase;
           color: var(--primary);
-          margin-bottom: 20px;
+          margin-bottom: 18px;
           animation: fade-up 0.7s ease both;
         }
 
+        .name-intro {
+          font-family: var(--font-hand), Caveat, cursive;
+          font-size: 28px;
+          font-weight: 600;
+          color: var(--text-secondary);
+          margin-bottom: 8px;
+          transform: rotate(-2deg);
+          transform-origin: left center;
+          animation: fade-up 0.7s ease 0.04s both;
+        }
+
         .hero-copy h1 {
-          font-size: clamp(48px, 8vw, 76px);
-          font-weight: 800;
-          line-height: 0.95;
-          margin-bottom: 20px;
-          animation: fade-up 0.7s ease 0.08s both;
+          font-family: var(--font-display), "Bitcount Prop Single", monospace;
+          font-size: clamp(34px, 5.5vw, 52px);
+          font-weight: 900;
+          line-height: 1.08;
+          letter-spacing: 0.02em;
+          text-transform: uppercase;
+          margin-bottom: 16px;
+          animation: fade-up 0.75s ease 0.08s both;
+        }
+
+        .availability {
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          font-size: 11px;
+          letter-spacing: 0.08em;
+          text-transform: uppercase;
+          color: var(--text-muted);
+          margin-bottom: 18px;
+          animation: fade-up 0.7s ease 0.12s both;
+        }
+
+        .avail-dot {
+          width: 7px;
+          height: 7px;
+          border-radius: 50%;
+          background: var(--primary);
+          animation: pulse-node 2s ease-in-out infinite;
         }
 
         .role {
-          font-size: 13px;
+          font-size: 12px;
           color: var(--text-secondary);
-          letter-spacing: 0.04em;
-          margin-bottom: 20px;
-          animation: fade-up 0.7s ease 0.14s both;
+          letter-spacing: 0.06em;
+          margin-bottom: 16px;
+          animation: fade-up 0.7s ease 0.16s both;
         }
 
         .lede {
           font-size: 17px;
           color: var(--text-secondary);
           max-width: 420px;
-          line-height: 1.7;
-          margin-bottom: 32px;
+          line-height: 1.65;
+          margin-bottom: 28px;
           animation: fade-up 0.7s ease 0.2s both;
         }
 
@@ -242,11 +281,11 @@ export default function Home() {
           display: flex;
           flex-wrap: wrap;
           gap: 12px;
-          animation: fade-up 0.7s ease 0.28s both;
+          animation: fade-up 0.7s ease 0.26s both;
         }
 
         .hero-visual {
-          animation: fade-up 0.9s ease 0.2s both;
+          animation: fade-up 1s ease 0.16s both;
           min-height: 340px;
         }
 

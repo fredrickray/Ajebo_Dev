@@ -1,19 +1,30 @@
 import type { Metadata } from "next";
-import { Syne, IBM_Plex_Sans, IBM_Plex_Mono } from "next/font/google";
+import {
+  Instrument_Sans,
+  IBM_Plex_Mono,
+  Bitcount_Prop_Single,
+  Caveat,
+} from "next/font/google";
 import "./globals.css";
 import { Navbar, Footer } from "@/components";
 import { ThemeProvider } from "@/context/ThemeContext";
 
-const syne = Syne({
-  variable: "--font-display",
-  subsets: ["latin"],
-  weight: ["500", "600", "700", "800"],
-});
-
-const plexSans = IBM_Plex_Sans({
+const instrument = Instrument_Sans({
   variable: "--font-body",
   subsets: ["latin"],
-  weight: ["400", "500", "600"],
+  weight: ["400", "500", "600", "700"],
+});
+
+const bitcount = Bitcount_Prop_Single({
+  variable: "--font-display",
+  subsets: ["latin"],
+  weight: ["400"],
+});
+
+const caveat = Caveat({
+  variable: "--font-hand",
+  subsets: ["latin"],
+  weight: ["500", "600", "700"],
 });
 
 const plexMono = IBM_Plex_Mono({
@@ -25,7 +36,7 @@ const plexMono = IBM_Plex_Mono({
 export const metadata: Metadata = {
   title: "AjeboDev | Backend Engineer",
   description:
-    "Backend engineer building APIs, distributed systems, and data infrastructure. PropSpaceX, OpenRDB, NeuroQO.",
+    "Backend engineer building APIs, distributed systems, and data infrastructure. PropSpaceX, OpenRDB, MarketLens.",
   keywords: [
     "backend engineer",
     "distributed systems",
@@ -48,15 +59,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" data-theme="light" suppressHydrationWarning>
       <head>
         <script
           dangerouslySetInnerHTML={{
-            __html: `(function(){try{var t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t);}catch(e){}})();`,
+            __html: `(function(){try{var t=localStorage.getItem('theme');document.documentElement.setAttribute('data-theme',(t==='dark'||t==='light')?t:'light');}catch(e){document.documentElement.setAttribute('data-theme','light');}})();`,
           }}
         />
       </head>
-      <body className={`${syne.variable} ${plexSans.variable} ${plexMono.variable}`}>
+      <body
+        className={`${instrument.variable} ${bitcount.variable} ${caveat.variable} ${plexMono.variable} ${instrument.className}`}
+      >
         <ThemeProvider>
           <Navbar />
           <main style={{ paddingTop: "var(--nav-height)", minHeight: "100vh" }}>

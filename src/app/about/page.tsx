@@ -1,7 +1,9 @@
 'use client';
 
 import Link from 'next/link';
+import { useState } from 'react';
 import Reveal from '@/components/Reveal';
+import ResumeModal from '@/components/ResumeModal';
 
 const stack = [
   {
@@ -74,6 +76,8 @@ const timeline = [
 ];
 
 export default function AboutPage() {
+  const [resumeOpen, setResumeOpen] = useState(false);
+
   return (
     <div className="about-page">
       <section className="about-hero">
@@ -210,13 +214,19 @@ export default function AboutPage() {
               <Link href="/projects" className="btn btn-secondary">
                 See projects
               </Link>
-              <a href="/resume.pdf" download="Fredrick_Anyanwu_Resume.pdf" className="btn btn-secondary">
-                Download resume
-              </a>
+              <button
+                type="button"
+                className="btn btn-secondary"
+                onClick={() => setResumeOpen(true)}
+              >
+                View resume
+              </button>
             </div>
           </Reveal>
         </div>
       </section>
+
+      <ResumeModal open={resumeOpen} onClose={() => setResumeOpen(false)} />
 
       <style jsx>{`
         .about-page {

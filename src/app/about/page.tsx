@@ -37,7 +37,7 @@ const timeline = [
     company: 'PsychSpace',
     location: 'Canada',
     description:
-      'Architected two interoperating backends — NestJS/MongoDB product API and Django/PostgreSQL scoring engine — linked by RS256 service JWTs. Built psychometric scoring, RBAC, S3 uploads, and Swagger docs.',
+      'Architected two interoperating services: a NestJS/MongoDB product API and a Django/PostgreSQL scoring engine connected with RS256-signed service JWTs. Designed the core data model and built psychometric scoring, RBAC, S3-compatible uploads, Swagger documentation, and structured logging.',
   },
   {
     year: '12/2024 – 01/2026',
@@ -45,15 +45,7 @@ const timeline = [
     company: 'Claymore Limited',
     location: 'Lagos, Nigeria',
     description:
-      'Led sprint planning, reviews, and architecture for Stakeholders Connect. REST APIs, Socket.io chat/notifications, JWT/RBAC, MongoDB optimization, and AWS CI/CD with Joi validation.',
-  },
-  {
-    year: '07/2024 – 09/2024',
-    role: 'Backend Developer (Intern)',
-    company: 'TechVibes Ltd',
-    location: 'Abuja, Nigeria',
-    description:
-      'Swift Ride platform — ride/fare APIs with Google Maps/Mapbox, WebSocket driver tracking, MFA (SMS/email/authenticator), and Cloudinary batch image processing.',
+      'Led sprint planning, task allocation, and code review while architecting Stakeholders Connect. Built REST APIs, Socket.io chat and notifications, JWT/RBAC, optimized MongoDB schemas and queries, and owned AWS CI/CD with Joi validation and error handling.',
   },
   {
     year: '01/2024 – 01/2025',
@@ -61,7 +53,7 @@ const timeline = [
     company: 'SustainaFinance DataNexus',
     location: 'Esch-sur-Alzette, Luxembourg',
     description:
-      'ESG and financial data pipelines — ingest, harmonize, and validate multi-source metrics with real-time calculation logic and governance controls.',
+      'Built pipelines that ingest, harmonize, and validate ESG scores, financial statements, and sustainability metrics across countries. Implemented real-time analysis on scalable data architecture with security and governance controls.',
   },
   {
     year: '01/2024 – 03/2025',
@@ -69,23 +61,15 @@ const timeline = [
     company: 'Padding Technologies',
     location: 'Lagos, Nigeria',
     description:
-      'Evolution and Officing backends on Node.js, Express, and PostgreSQL — schema design, complex SQL, tests, and cross-functional delivery.',
+      'Built scalable Node.js, Express, and PostgreSQL services for Evolution and Officing. Designed relational schemas and complex SQL queries, wrote unit and integration tests, maintained technical documentation, and shipped features with product and frontend teams.',
   },
   {
     year: '06/2023 – 10/2023',
-    role: 'Backend Developer (Intern)',
+    role: 'Backend Developer',
     company: 'HNG Tech',
     location: '',
     description:
-      'Screen-recording Chrome extension backend; contributed auth and payment microservices for a large e-commerce platform.',
-  },
-  {
-    year: '06/2022 – 09/2022',
-    role: 'Full-Stack Developer (Intern)',
-    company: 'Elatech Limited',
-    location: 'Lagos, Nigeria',
-    description:
-      'Weather app with third-party APIs and a Paystack clone covering core payment workflows with live Paystack integration.',
+      'Built the backend server for a screen-recording Chrome extension with efficient real-time data handling. Contributed to authentication and payment microservices for a large e-commerce platform.',
   },
 ];
 

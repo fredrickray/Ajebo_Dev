@@ -10,7 +10,7 @@ const projectsData: Record<string, ProjectDetailData> = {
     description:
       'Entry point for PropSpaceX — a Web2/Web3 real-estate microservice platform. Handles hybrid auth, distributed rate limiting, and gRPC routing across the service cluster.',
     tags: ['Node.js', 'TypeScript', 'Express', 'gRPC', 'Redis', 'Nginx'],
-    githubUrl: 'https://github.com/fredrickray/propspacex-gateway',
+    githubUrl: 'https://github.com/fredrickray/propspacex-api-gateway',
     architecture: {
       description:
         'Layered gateway with middleware for auth, rate limiting, and logging, routing requests via gRPC to internal services.',
